@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --theme-bg: 239 241 245;
+  --theme-bg-elevated: 230 233 239;
+  --theme-surface: 204 208 218;
+  --theme-surface-alt: 188 192 204;
+  --theme-border: 156 160 176;
+  --theme-border-strong: 140 143 161;
+  --theme-text: 76 79 105;
+  --theme-text-muted: 108 111 133;
+  --theme-text-subtle: 92 95 119;
+  --theme-accent: 223 142 29;
+  --theme-accent-strong: 114 135 253;
+  --theme-link: 30 102 245;
+  --theme-focus: 114 135 253;
+  --theme-on-accent: 35 38 52;
+  --theme-shadow: 35 38 52;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: rgb(var(--theme-bg));
+  color: rgb(var(--theme-text));
+  transition: background-color 300ms ease-out, color 300ms ease-out;
+  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+summary {
+  font: inherit;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+::selection {
+  background: rgb(var(--theme-accent) / 0.25);
+  color: rgb(var(--theme-text));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
