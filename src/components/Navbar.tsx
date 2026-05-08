@@ -99,8 +99,8 @@ export function Navbar() {
         </div>
       </header>
 
-      <aside className="fixed left-8 top-1/2 z-30 hidden -translate-y-1/2 lg:left-10 xl:left-14 lg:block">
-        <nav className="flex flex-col items-start gap-7" aria-label="Section navigation">
+      <aside className="fixed left-[5rem] top-1/2 z-30 hidden -translate-x-1/2 -translate-y-1/2 lg:block">
+        <nav className="flex flex-col items-center gap-7" aria-label="Section navigation">
           {primaryNavLinks.map((link) => (
             <a
               key={link.label}
