@@ -121,6 +121,8 @@ export function Hero() {
               <a
                 href={link.href}
                 aria-label={link.label}
+                target={link.href.startsWith('#') ? undefined : '_blank'}
+                rel={link.href.startsWith('#') ? undefined : 'noopener noreferrer'}
                 className="inline-flex items-center gap-2 transition hover:text-theme-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-theme-focus focus-visible:ring-offset-2 focus-visible:ring-offset-theme-bg"
               >
                 {link.icon ? (() => {

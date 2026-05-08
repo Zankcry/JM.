@@ -3,33 +3,19 @@ import { IconExternalLink, IconBrandGithub, IconArrowRight, IconHeart } from '@t
 
 const projects = [
   {
-    title: 'Terminal Dashboard',
-    description: 'A responsive bento-grid dashboard built with React and Tailwind CSS. Features real-time data streaming and dynamic themes.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
-    tags: ['React', 'Tailwind', 'TypeScript'],
-    links: { github: '#', live: '#' }
+    title: 'Charlie\'s Barber & Salon',
+    description: 'A high-performance static website highlighting services, portfolio, and an integrated blog section. Designed for excellent user experience and local SEO visibility.',
+    image: '/project_1.png',
+    tags: ['HTML5', 'Tailwind CSS', 'JavaScript', 'Firebase'],
+    links: { github: 'https://github.com/Zankcry/Barbershop_Website', live: 'https://charliesbarbershop.vercel.app/' }
   },
   {
-    title: 'Nexus UI',
-    description: 'An open-source component library focused on accessibility and motion. Heavily relies on modern CSS features.',
-    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800',
-    tags: ['Design Systems', 'Framer Motion', 'CSS'],
-    links: { github: '#', live: '#' }
+    title: 'Cognosphere / Hoyoverse Hub',
+    description: 'A web application built with Angular, showcasing the games and services of Cognosphere (Hoyoverse). Features dedicated sections for products, services, and the company profile.',
+    image: '/project_2.png',
+    tags: ['Angular', 'TypeScript', 'Tailwind CSS'],
+    links: { github: 'https://github.com/Zankcry/prelim-project-JM', live: 'https://prelim-project-jm.vercel.app' }
   },
-  {
-    title: 'Aura Sync',
-    description: 'A smart home automation hub interface that integrates seamlessly with ambient lighting systems.',
-    image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800',
-    tags: ['IoT', 'Node.js', 'React Native'],
-    links: { github: '#', live: '#' }
-  },
-  {
-    title: 'Chronos',
-    description: 'A minimalist time-tracking tool designed for freelancers to manage their invoices effortlessly.',
-    image: 'https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?auto=format&fit=crop&q=80&w=800',
-    tags: ['Next.js', 'Supabase', 'Stripe'],
-    links: { live: '#' }
-  }
 ];
 
 export function Projects() {
@@ -46,9 +32,9 @@ export function Projects() {
               aria-label={isHeartFilled ? "Unlike" : "Like"}
               title={isHeartFilled ? "Unlike" : "Like"}
             >
-              <IconHeart 
-                size={24} 
-                fill={isHeartFilled ? "currentColor" : "none"} 
+              <IconHeart
+                size={24}
+                fill={isHeartFilled ? "currentColor" : "none"}
                 className="transition-all duration-300"
               />
             </button>
@@ -92,8 +78,8 @@ export function Projects() {
                     </a>
                   )}
                   {project.links.live && (
-                    <a href={project.links.live} aria-label="Live Project" className="hover:text-theme-accent transition-colors">
-                      <IconExternalLink size={18} stroke={1.8} />
+                    <a href={project.links.live} aria-label="Live Project" className="group/link hover:text-theme-accent transition-colors">
+                      <IconExternalLink size={18} stroke={1.8} className="transition-transform duration-300 ease-out group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
                     </a>
                   )}
                 </div>

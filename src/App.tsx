@@ -15,27 +15,25 @@ export default function App() {
 
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed left-[4.9375rem] top-0 hidden h-[calc(50%-6.5rem)] w-px bg-gradient-to-b from-theme-border/50 to-transparent lg:block"
+        className="pointer-events-none fixed left-[4.9375rem] top-0 z-50 hidden h-[calc(50%-6.5rem)] w-px bg-gradient-to-b from-theme-border/50 to-transparent lg:block"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed left-[4.9375rem] bottom-0 hidden h-[calc(50%-6.5rem)] w-px bg-gradient-to-t from-theme-border/50 to-transparent lg:block"
+        className="pointer-events-none fixed left-[4.9375rem] bottom-0 z-50 hidden h-[calc(50%-6.5rem)] w-px bg-gradient-to-t from-theme-border/50 to-transparent lg:block"
       />
 
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed right-[4.9375rem] top-0 hidden h-[calc(40%-6rem)] w-px bg-gradient-to-b from-theme-border/50 to-transparent lg:block"
+        className="pointer-events-none fixed right-[4.9375rem] top-0 z-50 hidden h-[calc(40%-6rem)] w-px bg-gradient-to-b from-theme-border/50 to-transparent lg:block"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed right-[4.9375rem] bottom-0 hidden h-[calc(40%-6rem)] w-px bg-gradient-to-t from-theme-border/50 to-transparent lg:block"
+        className="pointer-events-none fixed right-[4.9375rem] bottom-0 z-50 hidden h-[calc(40%-6rem)] w-px bg-gradient-to-t from-theme-border/50 to-transparent lg:block"
       />
 
-      <div className="mx-auto w-full max-w-screen-2xl px-5 pt-6 sm:px-8 lg:px-12">
-        <Navbar />
-      </div>
+      <Navbar />
 
-      <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-5 pb-16 pt-20 sm:px-8 lg:px-12">
+      <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-5 pb-16 pt-32 sm:px-8 lg:px-12">
         <main className="flex flex-1 flex-col items-start gap-10 w-full">
           <Hero />
           <Projects />

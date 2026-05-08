@@ -20,9 +20,9 @@ export const moreNavLinks: NavLink[] = [
 ];
 
 export const socialLinks: NavLink[] = [
-  { label: 'GitHub', href: 'https://github.com/', icon: 'brand-github' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/', icon: 'brand-linkedin' },
-  { label: 'Instagram', href: 'https://www.instagram.com/', icon: 'brand-instagram' },
+  { label: 'GitHub', href: 'https://github.com/Zankcry', icon: 'brand-github' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/james-michael-duque-100154350/', icon: 'brand-linkedin' },
+  { label: 'Instagram', href: 'https://www.instagram.com/jme_smichael/?hl=en', icon: 'brand-instagram' },
   { label: 'Resume', href: '/resume.pdf', icon: 'file-cv' },
   { label: 'More about me...', href: '#about', icon: 'user' },
 ];

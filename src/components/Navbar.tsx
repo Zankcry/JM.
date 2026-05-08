@@ -26,8 +26,15 @@ export function Navbar() {
 
   return (
     <>
-      <header className="relative z-20">
-        <div className="flex items-center justify-between gap-4 pb-4">
+      <header className="fixed top-0 left-0 right-0 z-40 w-full pt-5 pb-4 px-5 sm:px-8 lg:px-12">
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-[175%] -z-10 bg-theme-bg/80 backdrop-blur-md"
+          style={{
+            maskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)'
+          }}
+        />
+        <div className="mx-auto flex max-w-screen-2xl items-center justify-between gap-4">
           <a
             href="#home"
             className="inline-flex items-center gap-1 rounded-full px-1 py-1 text-lg font-semibold tracking-tight text-theme-text transition-colors duration-300 ease-out hover:text-theme-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-theme-focus focus-visible:ring-offset-2 focus-visible:ring-offset-theme-bg"
