@@ -1,7 +1,7 @@
 import { IconArticle } from '@tabler/icons-react';
-import { posts } from '../data/posts';
 import { PostCard } from '../components/PostCard';
 import { StatusSidebar } from '../components/StatusSidebar';
+import { posts } from '../data/posts';
 
 export default function PostsPage() {
   return (
