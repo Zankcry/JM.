@@ -81,3 +81,9 @@ summary::-webkit-details-marker {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgb(var(--theme-accent) / 0.5);
 }
+
+/* Equalizer bar animation for music section */
+@keyframes eq-bounce {
+  from { transform: scaleY(0.4); opacity: 0.6; }
+  to   { transform: scaleY(1);   opacity: 1;   }
+}

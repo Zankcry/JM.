@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { socialLinks } from '../data/navigation';
 import {
   IconBrandGithub,
@@ -116,24 +117,29 @@ export function Hero() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center gap-3 text-sm text-theme-text-muted">
-          {socialLinks.map((link, index) => (
-            <span key={link.label} className="flex items-center gap-3">
-              <a
-                href={link.href}
-                aria-label={link.label}
-                target={link.href.startsWith('#') ? undefined : '_blank'}
-                rel={link.href.startsWith('#') ? undefined : 'noopener noreferrer'}
-                className="inline-flex items-center gap-2 transition hover:text-theme-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-theme-focus focus-visible:ring-offset-2 focus-visible:ring-offset-theme-bg"
-              >
+          {socialLinks.map((link, index) => {
+            const isInternal = link.href.startsWith('/') || link.href.startsWith('#');
+            const inner = (
+              <>
                 {link.icon ? (() => {
                   const SocialIcon = socialIcons[link.icon as keyof typeof socialIcons];
                   return <SocialIcon size={18} stroke={1.8} aria-hidden="true" />;
                 })() : null}
                 <span>{link.label}</span>
-              </a>
-              {index < socialLinks.length - 1 ? <span className="text-theme-text-muted/40" aria-hidden="true">|</span> : null}
-            </span>
-          ))}
+              </>
+            );
+            const cls = "inline-flex items-center gap-2 transition hover:text-theme-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-theme-focus focus-visible:ring-offset-2 focus-visible:ring-offset-theme-bg";
+            return (
+              <span key={link.label} className="flex items-center gap-3">
+                {isInternal ? (
+                  <Link to={link.href} aria-label={link.label} className={cls}>{inner}</Link>
+                ) : (
+                  <a href={link.href} aria-label={link.label} target="_blank" rel="noopener noreferrer" className={cls}>{inner}</a>
+                )}
+                {index < socialLinks.length - 1 ? <span className="text-theme-text-muted/40" aria-hidden="true">|</span> : null}
+              </span>
+            );
+          })}
         </div>
 
         <div className="mt-12 pt-6">

@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import ProjectsPage from './pages/ProjectsPage';
 import PostsPage from './pages/PostsPage';
 import PostDetailPage from './pages/PostDetailPage';
+import AboutPage from './pages/AboutPage';
 
 export default function App() {
   return (
@@ -42,6 +43,7 @@ export default function App() {
         <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-5 pb-16 pt-32 sm:px-8 lg:px-12">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/posts" element={<PostsPage />} />
             <Route path="/posts/:id" element={<PostDetailPage />} />
