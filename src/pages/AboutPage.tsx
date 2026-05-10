@@ -6,11 +6,16 @@ import {
   IconFileCv,
 } from '@tabler/icons-react';
 
-const spotifyEmbeds = [
+type SpotifyEmbed = {
+  type: 'track' | 'playlist';
+  id: string;
+};
+
+const spotifyEmbeds: SpotifyEmbed[] = [
   { type: 'track', id: '348NF6vX0Yh22xvH0EZEro' },
   { type: 'track', id: '14mT8BCOXiUUcGlb7KujkT' },
   { type: 'track', id: '1FXrYwvWwjmbw8cqFC1OWz' },
-] as const;
+];
 
 export default function AboutPage() {
   return (
@@ -27,26 +32,15 @@ export default function AboutPage() {
       {/* ── Hero bio ────────────────────────────────────── */}
       <section className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-16">
         {/* Avatar + quick facts */}
-        <div className="flex shrink-0 flex-col items-center gap-4 lg:items-start">
+        <div className="flex shrink-0 flex-col items-center gap-6 lg:items-start lg:pt-2">
           <div className="relative">
-            <div className="h-32 w-32 overflow-hidden rounded-3xl border-2 border-theme-accent/40 bg-theme-surface/50 shadow-lg">
-              <video
+            <div className="h-48 w-48 overflow-hidden rounded-[2.5rem] border-2 border-theme-accent/40 bg-theme-surface/50 shadow-xl">
+              <img
+                src="/images/profilePic.jpg"
+                alt="James Michael"
                 className="h-full w-full object-cover"
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
-                aria-hidden="true"
-              >
-                <source src="/videos/chibi.webm" type="video/webm" />
-              </video>
+              />
             </div>
-            {/* Online dot */}
-            <span className="absolute bottom-1 right-1 flex h-4 w-4 items-center justify-center">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-50" />
-              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-400" />
-            </span>
           </div>
 
           <div className="text-center lg:text-left">
@@ -79,9 +73,12 @@ export default function AboutPage() {
         {/* Bio text */}
         <div className="flex flex-col gap-5 text-base leading-8 text-theme-text-muted sm:text-[17px]">
           <p>
-            Hey — I&apos;m an IT undergraduate in the Philippines specializing in{' '}
-            <span className="text-theme-accent">Web Development</span>. I care deeply
-            about the small details: spacing, transitions, the feel of a button press.
+            Hey — I&apos;m an IT undergraduate from{' '}
+            <span className="text-theme-accent">Holy Angel University</span> based in{' '}
+            <span className="text-theme-accent">Pampanga, Philippines</span>. I&apos;m
+            primarily a <span className="text-theme-accent">Frontend Web Developer</span>,
+            but I&apos;m fully capable of working across the{' '}
+            <span className="text-theme-accent">Full Stack</span>.
           </p>
           <p>
             I&apos;ve worked on school projects and helped a local barbershop level up
@@ -97,9 +94,10 @@ export default function AboutPage() {
             to animate characters and build richer UI experiences.
           </p>
           <p>
-            Outside the editor: I tinker with PC builds, OS-hop for fun, and build
-            browser extensions nobody asked for. Also a certified man of culture — huge
-            into anime and manga.
+            Outside the screen, I spend my free time learning{' '}
+            <span className="text-theme-accent">Japanese</span> and diving into anime and
+            manga, especially ones with <span className="text-theme-accent">amazing visuals</span>.
+            I also tinker with PC builds, OS-hop for fun, and build browser extensions nobody asked for.
           </p>
         </div>
       </section>

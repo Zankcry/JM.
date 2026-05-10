@@ -109,10 +109,10 @@ export function Hero() {
 
         <div className="mt-8 max-w-3xl space-y-5 text-base leading-8 text-theme-text-muted sm:text-lg">
           <p>
-            I&apos;m an IT undergraduate specializing in Web Development. I obsess over pixel-perfect details while building websites for school projects and local businesses like helping a local <a href="#project-1" className="text-theme-accent px-1.5 py-0.5 rounded-md transition-colors hover:bg-theme-accent/20">Barbershop</a> increase their online awareness.
+            I&apos;m an IT undergraduate from <span className="text-theme-accent">Holy Angel University</span> based in <span className="text-theme-accent">Pampanga, Philippines</span>. While I&apos;m primarily a <span className="text-theme-accent">Frontend Web Developer</span>, I build websites for school projects and can work across the <span className="text-theme-accent">Full Stack</span> when needed.
           </p>
           <p>
-            Right now, my main focus is learning <a href="https://esotericsoftware.com/" className="text-theme-accent px-1.5 py-0.5 rounded-md transition-colors hover:bg-theme-accent/20" target="_blank" rel="noreferrer">Spine 2D</a> and crafting unique UI experiences for future projects. On the side, I love tinkering with PCs, OS's and building useful browser extensions.
+            When I&apos;m not coding, I spend my free time learning <span className="text-theme-accent">Japanese</span> or watching anime with <span className="text-theme-accent">amazing visuals</span>. I also enjoy learning <a href="https://esotericsoftware.com/" className="text-theme-accent px-1.5 py-0.5 rounded-md transition-colors hover:bg-theme-accent/20" target="_blank" rel="noreferrer">Spine 2D</a>, tinkering with PC builds, and building browser extensions.
           </p>
         </div>
 
