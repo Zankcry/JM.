@@ -31,6 +31,14 @@ export const mangaRecommendations: Recommendation[] = [
     rating: 10,
     status: 'Finished',
     image: '/images/jujutsuKaisen.webp'
+  },
+  {
+    id: '4',
+    title: 'Demon Slayer',
+    description: 'A masterpiece by Koyoharu Gotouge. The manga offers a complete and emotional conclusion to Tanjiro\'s journey to save his sister.',
+    rating: 10,
+    status: 'Finished',
+    image: '/images/demonSlayer.webp'
   }
 ];
 
@@ -58,5 +66,13 @@ export const animeRecommendations: Recommendation[] = [
     rating: 10,
     status: 'Finished',
     image: '/images/jujutsuKaisen.webp'
+  },
+  {
+    id: '4',
+    title: 'Hunter x Hunter',
+    description: 'A masterpiece of storytelling and power systems. Gon\'s journey to find his father is legendary, with complex characters and deep themes.',
+    rating: 10,
+    status: 'Finished',
+    image: '/images/hxh.webp'
   }
 ];

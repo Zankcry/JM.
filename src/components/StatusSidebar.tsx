@@ -35,7 +35,7 @@ export function StatusSidebar() {
           </button>
         </div>
 
-        <div className="mt-8 flex flex-col gap-8">
+        <div className="mt-8 flex max-h-[480px] flex-col gap-8 overflow-y-auto pr-2 custom-scrollbar">
           {data.map((item) => (
             <div key={item.id} className="group flex items-start gap-4">
               {/* Cover Image on the Left */}
