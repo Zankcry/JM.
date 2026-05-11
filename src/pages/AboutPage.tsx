@@ -34,13 +34,22 @@ export default function AboutPage() {
         {/* Avatar + quick facts */}
         <div className="flex shrink-0 flex-col items-center gap-6 lg:items-start lg:pt-2">
           <div className="relative">
-            <div className="h-48 w-48 overflow-hidden rounded-[2.5rem] border-2 border-theme-accent/40 bg-theme-surface/50 shadow-xl">
+            <div className="h-48 w-48 overflow-hidden rounded-[1.5rem] border-2 border-theme-accent/40 bg-theme-surface/50 shadow-xl">
               <img
                 src="/images/profilePic.jpg"
                 alt="James Michael"
                 className="h-full w-full object-cover"
               />
             </div>
+            {/* Chibi character overlay */}
+            <video
+              src="/videos/chibi.webm"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute -bottom-4 -right-8 h-20 w-20 object-contain drop-shadow-lg pointer-events-none"
+            />
           </div>
 
           <div className="text-center lg:text-left">
@@ -86,7 +95,9 @@ export default function AboutPage() {
             </span>. I&apos;m
             primarily a <span className="text-theme-accent">Frontend Web Developer</span>,
             but I&apos;m fully capable of working across the{' '}
-            <span className="text-theme-accent">Full Stack</span>.
+            <span className="text-theme-accent">Full Stack</span>. I am currently{' '}
+            <span className="text-theme-accent font-medium">looking for internships</span> to further
+            apply my knowledge in real-world environments.
           </p>
           <p>
             I&apos;ve worked on school projects and helped a local barbershop level up
