@@ -45,6 +45,7 @@ export default function AboutPage() {
 
           <div className="text-center lg:text-left">
             <p className="text-lg font-semibold text-theme-text">James Michael</p>
+            <p className="text-xs font-mono text-theme-text-muted tracking-widest">ジェームズ・マイケル</p>
             <p className="text-sm text-theme-accent">@Zankcry</p>
           </div>
 
@@ -73,9 +74,16 @@ export default function AboutPage() {
         {/* Bio text */}
         <div className="flex flex-col gap-5 text-base leading-8 text-theme-text-muted sm:text-[17px]">
           <p>
-            Hey — I&apos;m an IT undergraduate from{' '}
+            Yahho! (やっほー) I&apos;m an IT undergraduate from{' '}
             <span className="text-theme-accent">Holy Angel University</span> based in{' '}
-            <span className="text-theme-accent">Pampanga, Philippines</span>. I&apos;m
+            <span className="text-theme-accent">
+              Pampanga, Philippines{' '}
+              <img
+                src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f1f5-1f1ed.svg"
+                alt="🇵🇭"
+                className="inline-block h-[1.1em] w-auto align-middle mb-0.5"
+              />
+            </span>. I&apos;m
             primarily a <span className="text-theme-accent">Frontend Web Developer</span>,
             but I&apos;m fully capable of working across the{' '}
             <span className="text-theme-accent">Full Stack</span>.
