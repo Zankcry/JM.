@@ -51,11 +51,22 @@ export function Navbar() {
           <Link
             to="/"
             onClick={() => handleLinkClick('#home')}
-            className="inline-flex items-center gap-1 rounded-full px-1 py-1 text-lg font-semibold tracking-tight text-theme-text transition-colors duration-300 ease-out hover:text-theme-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-theme-focus focus-visible:ring-offset-2 focus-visible:ring-offset-theme-bg"
+            className="inline-flex items-center gap-1.5 rounded-full px-1 py-1 text-lg font-bold tracking-tight text-theme-text transition-colors duration-300 ease-out hover:text-theme-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-theme-focus focus-visible:ring-offset-2 focus-visible:ring-offset-theme-bg"
             aria-label="Go to home"
           >
-            <span className="text-theme-accent transition-colors duration-300 ease-out">~</span>
-            <span>/</span>
+            <span className="text-theme-accent transition-colors duration-300 ease-out">
+              {(() => {
+                const path = location.pathname;
+                if (path === '/') return 'ホーム';
+                if (path === '/about') return 'アバウト';
+                if (path === '/projects') return 'プロジェクト';
+                if (path === '/posts') return 'ポスト';
+                if (path.startsWith('/posts/')) return 'コンテンツ';
+                if (path === '/pics') return 'ピクス';
+                return 'ホーム';
+              })()}
+            </span>
+            <span className="text-theme-text/40 font-light"></span>
           </Link>
 
           <div className="hidden lg:block">
@@ -86,7 +97,7 @@ export function Navbar() {
                 {primaryNavLinks.map((link) => {
                   const isInternal = link.href.startsWith('/') || link.href.startsWith('#');
                   const href = link.href === '#projects' ? '/projects' : link.href;
-                  
+
                   return isInternal ? (
                     <Link
                       key={link.label}
@@ -222,4 +233,4 @@ export function Navbar() {
       <AccentSwitcher />
     </>
   );
-}
+}

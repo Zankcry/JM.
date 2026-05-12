@@ -89,12 +89,17 @@ export function Hero() {
           className="flex max-w-3xl flex-wrap items-center gap-x-3 gap-y-2 text-3xl font-semibold leading-[1.1] tracking-snug text-theme-text sm:text-4xl lg:text-5xl"
         >
           <span>Hey! I&apos;m</span>
-          <span className="inline-flex items-center gap-2 whitespace-nowrap">
-            <span className="ml-2 text-theme-accent transition-colors duration-300 ease-out">
-              James Michael
+          <span className="group/name inline-flex items-center gap-2 whitespace-nowrap">
+            <span className="relative ml-2 inline-block cursor-default text-theme-accent transition-colors duration-300 ease-out">
+              <span className="inline-block transition-all duration-300 group-hover/name:pointer-events-none group-hover/name:-translate-y-1 group-hover/name:opacity-0">
+                James Michael
+              </span>
+              <span className="absolute left-0 top-0 inline-block translate-y-1 opacity-0 transition-all duration-300 group-hover/name:translate-y-0 group-hover/name:opacity-100">
+                ジェームズマイケル
+              </span>
             </span>
             <video
-              className="h-14 w-14 rounded-2xl object-cover transition-transform duration-300 ease-out sm:h-16 sm:w-16"
+              className="h-14 w-14 rounded-2xl object-cover transition-transform duration-500 ease-out group-hover/name:translate-x-14 sm:h-16 sm:w-16"
               autoPlay
               loop
               muted
