@@ -128,7 +128,7 @@ export function ProfileWidgets({ currentTime }: { currentTime: Date }) {
         </div>
 
         {/* Map - Now fills the container with full color by default */}
-        <div className="absolute inset-0 z-10 grayscale-0 contrast-40 opacity-90 transition-all duration-700">
+        <div className="absolute inset-0 z-10 grayscale-0 contrast-40 opacity-90 transition-all duration-700 ease-out group-hover:scale-110">
           <MapContainer
             center={hauCoordinates}
             zoom={13}

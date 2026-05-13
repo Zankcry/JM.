@@ -65,11 +65,11 @@ function WordOfTheWeek() {
       </div>
 
       {/* Card */}
-      <div className="relative overflow-hidden rounded-xl border border-theme-accent/20 bg-theme-bg p-4 shadow-lg transition hover:border-theme-accent/50">
+      <div className="group relative overflow-hidden rounded-xl border border-theme-accent/20 bg-theme-bg p-4 shadow-lg transition hover:border-theme-accent/50">
         {/* Decorative kanji watermark */}
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -right-4 -top-6 select-none text-[9rem] font-bold leading-none text-theme-text opacity-[0.04]"
+          className="pointer-events-none absolute -right-4 -top-6 select-none text-[9rem] font-bold leading-none text-theme-text opacity-[0.04] transition-all duration-700 group-hover:scale-110 group-hover:opacity-[0.10]"
         >
           {word.kanji[0]}
         </span>

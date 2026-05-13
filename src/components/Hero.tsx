@@ -33,15 +33,15 @@ export function Hero() {
           <span>Yahho! I&apos;m</span>
           <span className="group/name inline-flex items-center gap-2 whitespace-nowrap">
             <span className="relative ml-2 inline-block cursor-default text-theme-accent transition-colors duration-300 ease-out">
-              <span className="inline-block transition-all duration-300 group-hover/name:pointer-events-none group-hover/name:-translate-y-1 group-hover/name:opacity-0">
+              <span className="inline-block transition-all duration-300 group-hover/name:pointer-events-none group-hover/name:opacity-0">
                 James Michael
               </span>
-              <span className="absolute left-0 top-0 inline-block translate-y-1 opacity-0 transition-all duration-300 group-hover/name:translate-y-0 group-hover/name:opacity-100">
+              <span className="absolute left-0 top-0 inline-block opacity-0 transition-all duration-300 group-hover/name:opacity-100">
                 ジェームズマイケル
               </span>
             </span>
             <video
-              className="h-14 w-14 rounded-2xl object-cover transition-transform duration-500 ease-out group-hover/name:translate-x-14 sm:h-16 sm:w-16"
+              className="h-14 w-14 rounded-2xl object-cover transition-transform duration-500 ease-out group-hover/name:translate-x-16 sm:h-16 sm:w-16"
               autoPlay
               loop
               muted
@@ -99,12 +99,12 @@ export function Hero() {
 
           <div className="flex flex-wrap items-center gap-2 pb-1">
             {techStack.map((item) => (
-              <div 
-                key={item.label} 
+              <div
+                key={item.label}
                 className="group flex items-center gap-2 rounded-lg border border-theme-accent/10 bg-theme-bg/50 px-2.5 py-1.5 transition-all hover:border-theme-accent/30 hover:bg-theme-bg"
                 style={{ '--brand-color': item.tone } as React.CSSProperties}
               >
-                <div 
+                <div
                   className="flex h-5 w-5 items-center justify-center rounded-md bg-white/5 transition-transform group-hover:scale-110"
                   style={{ color: item.tone }}
                 >

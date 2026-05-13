@@ -97,16 +97,16 @@ export function RecentActivity() {
             <Link
               key={card.title}
               to={card.href}
-              className="group relative flex flex-col overflow-hidden rounded-xl border border-theme-accent/40 bg-theme-bg/30 p-5 shadow-soft transition-all hover:border-theme-accent/70 hover:bg-theme-bg hover:-translate-y-1"
+              className="group relative flex flex-col overflow-hidden rounded-xl border border-theme-accent/40 bg-theme-bg/30 p-5 shadow-soft transition-all hover:border-theme-accent/70 hover:bg-theme-bg"
             >
               {/* Background Preview - Layered above card bg but below content */}
               <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 {card.title === 'Word of the Week' ? (
-                  <div className="absolute -right-2 -top-4 select-none text-[7rem] font-bold leading-none text-theme-text opacity-[0.08] transition-opacity group-hover:opacity-[0.15]">
+                  <div className="absolute -right-2 -top-4 select-none text-[7rem] font-bold leading-none text-theme-text opacity-[0.08] transition-all duration-500 group-hover:opacity-[0.15] group-hover:scale-110">
                     語
                   </div>
                 ) : card.title === 'Music I Code To' ? (
-                  <div className="absolute -right-4 -top-4 opacity-[0.12] transition-opacity group-hover:opacity-[0.25]">
+                  <div className="absolute -right-4 -top-4 opacity-[0.12] transition-all duration-500 group-hover:opacity-[0.25] group-hover:scale-110">
                     <IconBrandSpotify size={140} style={{ color: '#1DB954' }} />
                   </div>
                 ) : (
