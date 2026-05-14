@@ -21,7 +21,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="flex w-full flex-1 items-start pb-10 pt-8 sm:pt-14 lg:pt-16"
+      className="flex w-full flex-1 items-start pb-10 "
       aria-labelledby="hero-title"
     >
       <div className="w-full max-w-4xl">
