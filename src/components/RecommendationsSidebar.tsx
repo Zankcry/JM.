@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IconStar, IconBook, IconPlayerPlay } from '@tabler/icons-react';
+import { IconStar, IconBook, IconPlayerPlay, IconCheck } from '@tabler/icons-react';
 import { mangaRecommendations, animeRecommendations } from '../data/recommendations';
 
 export function RecommendationsSidebar() {
@@ -52,8 +52,9 @@ export function RecommendationsSidebar() {
               {/* Content on the Right */}
               <div className="flex flex-1 flex-col gap-1.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-[9px] font-bold uppercase tracking-tight text-theme-accent">
+                  <span className={`flex items-center gap-1 text-[9px] font-bold uppercase tracking-tight ${item.status === 'Finished' ? 'text-green-500' : 'text-theme-accent'}`}>
                     {item.status}
+                    {item.status === 'Finished' && <IconCheck size={10} stroke={3} />}
                   </span>
                   <div className="flex items-center gap-1 text-[9px] font-bold text-theme-text-subtle">
                     <IconStar size={10} className="fill-theme-accent text-theme-accent" />

@@ -40,7 +40,7 @@ export function RecentActivity() {
     },
     {
       title: 'Manga Recommendations',
-      description: 'My personal manga/anime reccomendations',
+      description: 'My personal manga/anime recommendations',
       icon: IconBook,
       href: '/posts',
       color: '#A855F7'
