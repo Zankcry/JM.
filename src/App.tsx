@@ -21,8 +21,8 @@ function AnimatedRoutes() {
   }, []);
 
   return (
-    <AnimatePresence 
-      mode="wait" 
+    <AnimatePresence
+      mode="wait"
       onExitComplete={() => {
         window.scrollTo({ top: 0, left: 0, behavior: 'instant' as any });
       }}
@@ -64,23 +64,7 @@ export default function App() {
           <div className="absolute bottom-[-8rem] left-[-4rem] h-80 w-80 rounded-full bg-theme-accent-strong/10 blur-3xl transition-colors duration-300 ease-out" />
         </div>
 
-        {/* Decorative Lines */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none fixed left-[4.9375rem] top-0 z-50 hidden h-[calc(48%-6.5rem)] w-0.5 bg-gradient-to-b from-theme-accent/50 to-transparent lg:block"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none fixed left-[4.9375rem] bottom-0 z-50 hidden h-[calc(48%-6.5rem)] w-0.5 bg-gradient-to-t from-theme-accent/50 to-transparent lg:block"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none fixed right-[4.9375rem] top-0 z-50 hidden h-[calc(41%-6rem)] w-0.5 bg-gradient-to-b from-theme-accent/50 to-transparent lg:block"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none fixed right-[4.9375rem] bottom-0 z-50 hidden h-[calc(41%-6rem)] w-0.5 bg-gradient-to-t from-theme-accent/50 to-transparent lg:block"
-        />
+
 
         <Navbar />
 

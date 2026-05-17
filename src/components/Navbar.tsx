@@ -138,7 +138,18 @@ export function Navbar() {
         </div>
       </header>
 
-      <aside className="fixed left-[5rem] top-1/2 z-30 hidden -translate-x-1/2 -translate-y-1/2 lg:block">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed left-[5rem] top-0 z-50 w-0.5 -translate-x-1/2 bg-gradient-to-b from-theme-accent/50 to-transparent hidden lg:block"
+        style={{ height: 'calc(50vh - 120px)' }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed left-[5rem] bottom-0 z-50 w-0.5 -translate-x-1/2 bg-gradient-to-t from-theme-accent/50 to-transparent hidden lg:block"
+        style={{ height: 'calc(50vh - 120px)' }}
+      />
+ 
+      <aside className="fixed left-[5rem] top-1/2 z-50 hidden -translate-x-1/2 -translate-y-1/2 lg:block">
         <nav className="flex flex-col items-center gap-7" aria-label="Section navigation">
           {primaryNavLinks.map((link) => {
             const isInternal = link.href.startsWith('/') || link.href.startsWith('#');
@@ -165,7 +176,6 @@ export function Navbar() {
               </a>
             );
           })}
-
         </nav>
       </aside>
 
