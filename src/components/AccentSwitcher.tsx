@@ -26,10 +26,10 @@ export function AccentSwitcher() {
 
     const newRipple: Ripple = {
       id: Math.random().toString(36).substring(2, 9),
-      top: button.offsetTop,
-      left: button.offsetLeft,
-      width: button.offsetWidth,
-      height: button.offsetHeight,
+      top: button.parentElement?.offsetTop || 0,
+      left: button.parentElement?.offsetLeft || 0,
+      width: button.parentElement?.offsetWidth || button.offsetWidth,
+      height: button.parentElement?.offsetHeight || button.offsetHeight,
       color: colorStr,
     };
 
