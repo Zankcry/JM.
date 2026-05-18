@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { IconNews, IconStar, IconBook, IconPlayerPlay, IconCheck, IconHeart, IconX } from '@tabler/icons-react';
 import { PostCard } from '../components/PostCard';
 import { posts } from '../data/posts';
@@ -10,7 +10,23 @@ export default function PostsPage() {
   const [showTastePopup, setShowTastePopup] = useState(false);
   const [isNoHovered, setIsNoHovered] = useState(false);
 
+  const [tabIndicatorStyle, setTabIndicatorStyle] = useState({ left: 0, width: 0, opacity: 0 });
+  const tabContainerRef = useRef<HTMLDivElement>(null);
+
   const recData = recCategory === 'manga' ? mangaRecommendations : animeRecommendations;
+
+  useEffect(() => {
+    if (tabContainerRef.current) {
+      const activeElement = tabContainerRef.current.querySelector('[aria-checked="true"]') as HTMLElement;
+      if (activeElement) {
+        setTabIndicatorStyle({
+          left: activeElement.offsetLeft,
+          width: activeElement.offsetWidth,
+          opacity: 1,
+        });
+      }
+    }
+  }, [activeTab]);
 
   useEffect(() => {
     if (!showTastePopup) return;
@@ -59,22 +75,38 @@ export default function PostsPage() {
 
         {/* Premium Segmented Tab Control */}
         <div className="flex justify-start">
-          <div className="inline-flex p-1.5 rounded-2xl bg-theme-bg-elevated/40 border border-theme-accent/10 shadow-inner backdrop-blur-md">
+          <div
+            ref={tabContainerRef}
+            className="relative inline-flex p-1.5 rounded-2xl bg-theme-bg-elevated/40 border border-theme-accent/10 shadow-inner backdrop-blur-md"
+            role="radiogroup"
+          >
+            <div
+              className="absolute bottom-1.5 top-1.5 rounded-xl bg-theme-accent shadow-md transition-all duration-500 ease-out"
+              style={{
+                left: `${tabIndicatorStyle.left}px`,
+                width: `${tabIndicatorStyle.width}px`,
+                opacity: tabIndicatorStyle.opacity,
+              }}
+            />
             <button
+              role="radio"
+              aria-checked={activeTab === 'posts'}
               onClick={() => setActiveTab('posts')}
-              className={`flex items-center gap-2.5 px-6 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all duration-300 active:scale-95 ${activeTab === 'posts'
-                ? 'bg-theme-accent text-theme-on-accent shadow-md shadow-theme-accent/20'
-                : 'text-theme-text-muted hover:text-theme-text hover:bg-theme-accent/5'
+              className={`relative z-10 flex items-center gap-2.5 px-6 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-colors duration-500 active:scale-95 ${activeTab === 'posts'
+                ? 'text-theme-on-accent'
+                : 'text-theme-text-muted hover:text-theme-text'
                 }`}
             >
               <IconNews size={16} />
               Writing
             </button>
             <button
+              role="radio"
+              aria-checked={activeTab === 'recs'}
               onClick={() => setActiveTab('recs')}
-              className={`flex items-center gap-2.5 px-6 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all duration-300 active:scale-95 ${activeTab === 'recs'
-                ? 'bg-theme-accent text-theme-on-accent shadow-md shadow-theme-accent/20'
-                : 'text-theme-text-muted hover:text-theme-text hover:bg-theme-accent/5'
+              className={`relative z-10 flex items-center gap-2.5 px-6 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-colors duration-500 active:scale-95 ${activeTab === 'recs'
+                ? 'text-theme-on-accent'
+                : 'text-theme-text-muted hover:text-theme-text'
                 }`}
             >
               <IconStar size={16} />

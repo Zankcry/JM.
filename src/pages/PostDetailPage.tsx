@@ -15,7 +15,7 @@ export default function PostDetailPage() {
   }
 
   // Metadata for Spine 2D
-  const postDate = "May 12, 2024";
+  const postDate = "May 12, 2026";
   const postTags = ['Spine', 'Animation', 'UX Design', 'WebDev'];
 
   return (
