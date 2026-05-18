@@ -25,22 +25,22 @@ type JpWord = {
   romaji: string;
   pos: string; // part of speech
   meaning: string;
-  example?: { jp: string; en: string };
+  example?: { jp: string; romaji: string; en: string };
 };
 
 const jpWords: JpWord[] = [
-  { kanji: '頑張る', furigana: 'がんばる', romaji: 'ganbaru', pos: 'verb', meaning: 'To do one\'s best; to persist; to hang in there', example: { jp: '毎日頑張っています。', en: 'I\'m doing my best every day.' } },
-  { kanji: '懐かしい', furigana: 'なつかしい', romaji: 'natsukashii', pos: 'adjective', meaning: 'Nostalgic; fondly remembered', example: { jp: 'この曲は懐かしいな。', en: 'This song brings back memories.' } },
-  { kanji: '相変わらず', furigana: 'あいかわらず', romaji: 'aikawarazu', pos: 'adverb', meaning: 'Your still the cutest', example: { jp: '相変わらず可愛いね。', en: 'You are still the cutest.' } },
-  { kanji: '物語', furigana: 'ものがたり', romaji: 'monogatari', pos: 'noun', meaning: 'Story; tale; narrative', example: { jp: '面白い物語を読んだ。', en: 'I read an interesting story.' } },
-  { kanji: 'いつか会える', furigana: 'いつかあえる', romaji: 'itsuka aeru', pos: 'phrase', meaning: 'I hope to see you someday', example: { jp: 'いつかまた会えるのを楽しみにしています。', en: 'I look forward to seeing you again someday.' } },
-  { kanji: '縁', furigana: 'えん', romaji: 'en', pos: 'noun', meaning: 'Fate; destiny; a karmic bond between people', example: { jp: '不思議な縁で出会った。', en: 'We met through a mysterious fate.' } },
-  { kanji: '原動力', furigana: 'げんどうりょく', romaji: 'gendouryoku', pos: 'noun', meaning: 'Your my motivation', example: { jp: '君は僕の原動力だよ。', en: 'You are the driving force that keeps me going.' } },
-  { kanji: '夢中', furigana: 'むちゅう', romaji: 'muchuu', pos: 'noun/adjective', meaning: 'Absorbed in; crazy about; engrossed', example: { jp: 'ゲームに夢中になった。', en: 'I got completely absorbed in the game.' } },
-  { kanji: '雰囲気', furigana: 'ふんいき', romaji: 'fun\'iki', pos: 'noun', meaning: 'Atmosphere; vibe; ambiance', example: { jp: 'いい雰囲気のカフェだ。', en: 'It\'s a café with a nice vibe.' } },
-  { kanji: '恋しい', furigana: 'こいしい', romaji: 'koishii', pos: 'adjective', meaning: 'I absolutely miss someone', example: { jp: '君の声が恋しい。', en: 'I absolutely miss hearing your voice.' } },
-  { kanji: '切ない', furigana: 'せつない', romaji: 'setsunai', pos: 'adjective', meaning: 'Heartbreaking; melancholic; aching', example: { jp: '切ない音楽が好きだ。', en: 'I like melancholic music.' } },
-  { kanji: '積み重ねる', furigana: 'つみかさねる', romaji: 'tsumikasaneru', pos: 'verb', meaning: 'To pile up; to accumulate (effort, experience)', example: { jp: '経験を積み重ねる。', en: 'To accumulate experience.' } },
+  { kanji: '頑張る', furigana: 'がんばる', romaji: 'ganbaru', pos: 'verb', meaning: 'To do one\'s best; to persist; to hang in there', example: { jp: '毎日頑張っています。', romaji: 'Mainichi ganbatte imasu.', en: 'I\'m doing my best every day.' } },
+  { kanji: '懐かしい', furigana: 'なつかしい', romaji: 'natsukashii', pos: 'adjective', meaning: 'Nostalgic; fondly remembered', example: { jp: 'この曲は懐かしいな。', romaji: 'Kono kyoku wa natsukashii na.', en: 'This song brings back memories.' } },
+  { kanji: '相変わらず', furigana: 'あいかわらず', romaji: 'aikawarazu', pos: 'adverb', meaning: 'Your still the cutest', example: { jp: '相変わらず可愛いね。', romaji: 'Aikawarazu kawaii ne.', en: 'You are still the cutest.' } },
+  { kanji: '物語', furigana: 'ものがたり', romaji: 'monogatari', pos: 'noun', meaning: 'Story; tale; narrative', example: { jp: '面白い物語を読んだ。', romaji: 'Omoshiroi monogatari o yonda.', en: 'I read an interesting story.' } },
+  { kanji: 'いつか会える', furigana: 'いつかあえる', romaji: 'itsuka aeru', pos: 'phrase', meaning: 'I hope to see you someday', example: { jp: 'いつかまた会えるのを楽しみにしています。', romaji: 'Itsuka mata aeru no o tanoshimi ni shite imasu.', en: 'I look forward to seeing you again someday.' } },
+  { kanji: '縁', furigana: 'えん', romaji: 'en', pos: 'noun', meaning: 'Fate; destiny; a karmic bond between people', example: { jp: '不思議な縁で出会った。', romaji: 'Fushigi na en de deatta.', en: 'We met through a mysterious fate.' } },
+  { kanji: '原動力', furigana: 'げんどうりょく', romaji: 'gendouryoku', pos: 'noun', meaning: 'Your my motivation', example: { jp: '君は僕の原動力だよ。', romaji: 'Kimi wa boku no gendouryoku da yo.', en: 'You are the driving force that keeps me going.' } },
+  { kanji: '夢中', furigana: 'むちゅう', romaji: 'muchuu', pos: 'noun/adjective', meaning: 'Absorbed in; crazy about; engrossed', example: { jp: 'ゲームに夢中になった。', romaji: 'Geemu ni muchuu ni natta.', en: 'I got completely absorbed in the game.' } },
+  { kanji: '雰囲気', furigana: 'ふんいき', romaji: 'fun\'iki', pos: 'noun', meaning: 'Atmosphere; vibe; ambiance', example: { jp: 'いい雰囲気のカフェだ。', romaji: 'Ii fun\'iki no kafe da.', en: 'It\'s a café with a nice vibe.' } },
+  { kanji: '恋しい', furigana: 'こいしい', romaji: 'koishii', pos: 'adjective', meaning: 'I absolutely miss someone', example: { jp: '君の声が恋しい。', romaji: 'Kimi no koe ga koishii.', en: 'I absolutely miss hearing your voice.' } },
+  { kanji: '切ない', furigana: 'せつない', romaji: 'setsunai', pos: 'adjective', meaning: 'Heartbreaking; melancholic; aching', example: { jp: '切ない音楽が好きだ。', romaji: 'Setsunai ongaku ga suki da.', en: 'I like melancholic music.' } },
+  { kanji: '積み重ねる', furigana: 'つみかさねる', romaji: 'tsumikasaneru', pos: 'verb', meaning: 'To pile up; to accumulate (effort, experience)', example: { jp: '経験を積み重ねる。', romaji: 'Keiken o tsumikasaneru.', en: 'To accumulate experience.' } },
 ];
 
 // Deterministically pick a word based on ISO week number
@@ -102,6 +102,7 @@ function WordOfTheWeek() {
             {word.example && (
               <div className="rounded-xl border border-theme-accent/20 bg-theme-bg/40 px-4 py-3 shadow-sm">
                 <p className="text-sm text-theme-text font-medium">{word.example.jp}</p>
+                <p className="text-[11px] text-theme-text-muted mt-1 opacity-80">{word.example.romaji}</p>
                 <p className="text-xs text-theme-text-muted mt-1 italic">{word.example.en}</p>
               </div>
             )}
