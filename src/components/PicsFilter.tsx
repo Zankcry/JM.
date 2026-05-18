@@ -30,7 +30,7 @@ export default function PicsFilter({ tags, filter, setFilter, allPhotos }: PicsF
               <motion.span
                 layoutId="filter-pill"
                 className="absolute inset-0 rounded-lg bg-theme-accent"
-                transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                transition={{ type: 'spring', stiffness: 150, damping: 22 }}
               />
             )}
             <span

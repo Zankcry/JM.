@@ -167,7 +167,7 @@ export function Navbar() {
           />
 
           <div className="hidden lg:block">
-            <ThemeSwitcher />
+            <ThemeSwitcher id="desktop" />
           </div>
 
           <button
@@ -223,7 +223,7 @@ export function Navbar() {
               </nav>
 
 
-              <ThemeSwitcher />
+              <ThemeSwitcher id="mobile" />
             </div>
           </div>
         </div>
