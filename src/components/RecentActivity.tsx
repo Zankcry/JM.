@@ -12,9 +12,11 @@ import {
 import { posts } from '../data/posts';
 import { PostCard } from './PostCard';
 import { ProfileWidgets } from './BentoProfile';
+import { useTerminal } from '../context/TerminalContext';
 
 export function RecentActivity() {
   const [currentTime, setCurrentTime] = useState(new Date());
+  const { setHoveredCommand } = useTerminal();
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
@@ -54,6 +56,11 @@ export function RecentActivity() {
     }
   ];
 
+  const getCommandFromHref = (href: string) => {
+    const page = href.split('#')[0];
+    return page.replace(/^\//, '') || 'home';
+  };
+
   return (
     <section className="flex w-full flex-col gap-12">
       {/* Recent Posts Section */}
@@ -68,6 +75,8 @@ export function RecentActivity() {
           </div>
           <Link
             to="/posts"
+            onMouseEnter={() => setHoveredCommand('posts')}
+            onMouseLeave={() => setHoveredCommand(null)}
             className="group flex items-center gap-2 whitespace-nowrap text-sm font-medium text-theme-text-muted transition-colors hover:text-theme-accent"
           >
             All posts
@@ -97,6 +106,8 @@ export function RecentActivity() {
             <Link
               key={card.title}
               to={card.href}
+              onMouseEnter={() => setHoveredCommand(getCommandFromHref(card.href))}
+              onMouseLeave={() => setHoveredCommand(null)}
               className="group relative flex flex-col overflow-hidden rounded-xl border border-theme-accent/20 bg-theme-bg/30 p-5 shadow-lg transition-all hover:border-theme-accent/70 hover:bg-theme-bg"
             >
               {/* Background Preview - Layered above card bg but below content */}

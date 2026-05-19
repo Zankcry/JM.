@@ -1,6 +1,7 @@
 import { IconBrandGithub, IconExternalLink } from '@tabler/icons-react';
 import { ProjectPreview } from './ProjectPreview';
 import { techStack, techStackIcons } from '../data/tech';
+import { useTerminal } from '../context/TerminalContext';
 
 type Project = {
   title: string;
@@ -15,10 +16,15 @@ type Project = {
 };
 
 export function ProjectCard({ project, id, padding = 'p-5' }: { project: Project; id?: string; padding?: string }) {
+  const { setHoveredCommand } = useTerminal();
+  const projectSlug = project.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
   return (
     <div
       id={id}
       className="group relative flex flex-col overflow-hidden rounded-xl border border-theme-accent/20 bg-theme-bg shadow-lg transition-all hover:border-theme-accent/50"
+      onMouseEnter={() => setHoveredCommand(`open projects/${projectSlug}`)}
+      onMouseLeave={() => setHoveredCommand(null)}
     >
       <ProjectPreview project={project} />
 

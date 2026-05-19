@@ -10,6 +10,7 @@ import PostDetailPage from './pages/PostDetailPage';
 import AboutPage from './pages/AboutPage';
 import PicsPage from './pages/PicsPage';
 import { Footer } from './components/Footer';
+import { TerminalProvider } from './context/TerminalContext';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -53,23 +54,23 @@ function AnimatedRoutes() {
 
 export default function App() {
   return (
-    <Router>
-      <div className="relative min-h-screen overflow-hidden bg-theme-bg text-theme-text font-inter selection:bg-theme-accent/30 selection:text-theme-text flex flex-col">
-        <SmokeEffect />
+    <TerminalProvider>
+      <Router>
+        <div className="relative min-h-screen overflow-hidden bg-theme-bg text-theme-text font-inter selection:bg-theme-accent/30 selection:text-theme-text flex flex-col">
+          <SmokeEffect />
 
-        {/* Background Gradients */}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute left-1/2 top-[-7rem] h-72 w-72 -translate-x-1/2 rounded-full bg-theme-accent/10 blur-3xl transition-colors duration-300 ease-out" />
-          <div className="absolute right-[-6rem] top-1/3 h-96 w-96 rounded-full bg-theme-link/10 blur-3xl transition-colors duration-300 ease-out" />
-          <div className="absolute bottom-[-8rem] left-[-4rem] h-80 w-80 rounded-full bg-theme-accent-strong/10 blur-3xl transition-colors duration-300 ease-out" />
+          {/* Background Gradients */}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+            <div className="absolute left-1/2 top-[-7rem] h-72 w-72 -translate-x-1/2 rounded-full bg-theme-accent/10 blur-3xl transition-colors duration-300 ease-out" />
+            <div className="absolute right-[-6rem] top-1/3 h-96 w-96 rounded-full bg-theme-link/10 blur-3xl transition-colors duration-300 ease-out" />
+            <div className="absolute bottom-[-8rem] left-[-4rem] h-80 w-80 rounded-full bg-theme-accent-strong/10 blur-3xl transition-colors duration-300 ease-out" />
+          </div>
+
+          <Navbar />
+
+          <AnimatedRoutes />
         </div>
-
-
-
-        <Navbar />
-
-        <AnimatedRoutes />
-      </div>
-    </Router>
+      </Router>
+    </TerminalProvider>
   );
 }

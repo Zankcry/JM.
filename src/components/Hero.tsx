@@ -9,6 +9,7 @@ import {
   IconAddressBook,
 } from '@tabler/icons-react';
 import { techStack, techStackIcons } from '../data/tech';
+import { useTerminal } from '../context/TerminalContext';
 
 const socialIcons = {
   'brand-github': IconBrandGithub,
@@ -19,6 +20,8 @@ const socialIcons = {
 } as const;
 
 export function Hero() {
+  const { setHoveredCommand } = useTerminal();
+
   return (
     <section
       id="home"
@@ -78,10 +81,22 @@ export function Hero() {
 
         <div className="mt-8 max-w-3xl space-y-5 text-base leading-8 text-theme-text-muted sm:text-lg">
           <p>
-            I&apos;m an IT undergraduate specializing in Web Development. I currently build websites for personal projects and local businesses like helping a local <a href="#project-1" className="text-theme-accent px-1.5 py-0.5 rounded-md transition-colors hover:bg-theme-accent/20">Barbershop</a> increase their online awareness.
+            I&apos;m an IT undergraduate specializing in Web Development. I currently build websites for personal projects and local businesses like helping a local <a 
+              href="#project-1" 
+              className="text-theme-accent px-1.5 py-0.5 rounded-md transition-colors hover:bg-theme-accent/20"
+              onMouseEnter={() => setHoveredCommand('open projects/charlies-barber-salon')}
+              onMouseLeave={() => setHoveredCommand(null)}
+            >Barbershop</a> increase their online awareness.
           </p>
           <p>
-            Right now, my main focus is learning <a href="https://esotericsoftware.com/" className="text-theme-accent px-1.5 py-0.5 rounded-md transition-colors hover:bg-theme-accent/20" target="_blank" rel="noreferrer">Spine 2D</a> and crafting unique UI experiences for future projects. I just love creating and developing websites with unique visuals.
+            Right now, my main focus is learning <a 
+              href="https://esotericsoftware.com/" 
+              className="text-theme-accent px-1.5 py-0.5 rounded-md transition-colors hover:bg-theme-accent/20" 
+              target="_blank" 
+              rel="noreferrer"
+              onMouseEnter={() => setHoveredCommand('open spine2d')}
+              onMouseLeave={() => setHoveredCommand(null)}
+            >Spine 2D</a> and crafting unique UI experiences for future projects. I just love creating and developing websites with unique visuals.
           </p>
         </div>
 
@@ -89,6 +104,15 @@ export function Hero() {
           {socialLinks.map((link) => {
             const isInternal = link.href.startsWith('/') || link.href.startsWith('#');
             const cls = "group flex items-center gap-2 rounded-lg border border-theme-accent/20 bg-theme-bg/50 px-3 py-1.5 text-xs font-medium text-theme-text-muted transition-all hover:border-theme-accent/50 hover:text-theme-text hover:shadow-sm active:scale-95";
+
+            // Determine command based on button destination/label
+            let cmd = '';
+            if (link.label === 'GitHub') cmd = 'open github';
+            else if (link.label === 'LinkedIn') cmd = 'open linkedin';
+            else if (link.label === 'Resume') cmd = 'cat resume.pdf';
+            else if (link.label === 'More about me...') cmd = 'about';
+            else if (isInternal) cmd = link.href.replace(/^\//, '');
+            else cmd = `open ${link.label.toLowerCase()}`;
 
             const inner = (
               <>
@@ -103,9 +127,27 @@ export function Hero() {
             return (
               <span key={link.label}>
                 {isInternal ? (
-                  <Link to={link.href} aria-label={link.label} className={cls}>{inner}</Link>
+                  <Link
+                    to={link.href}
+                    aria-label={link.label}
+                    className={cls}
+                    onMouseEnter={() => setHoveredCommand(cmd)}
+                    onMouseLeave={() => setHoveredCommand(null)}
+                  >
+                    {inner}
+                  </Link>
                 ) : (
-                  <a href={link.href} aria-label={link.label} target="_blank" rel="noopener noreferrer" className={cls}>{inner}</a>
+                  <a
+                    href={link.href}
+                    aria-label={link.label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cls}
+                    onMouseEnter={() => setHoveredCommand(cmd)}
+                    onMouseLeave={() => setHoveredCommand(null)}
+                  >
+                    {inner}
+                  </a>
                 )}
               </span>
             );

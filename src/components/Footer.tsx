@@ -1,8 +1,10 @@
 import { IconBrandGithub, IconBrandLinkedin, IconMail, IconArrowUp, IconFileCv } from '@tabler/icons-react';
 import { socialLinks } from '../data/navigation';
+import { useTerminal } from '../context/TerminalContext';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { setHoveredCommand } = useTerminal();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -14,6 +16,15 @@ export function Footer() {
       case 'LinkedIn': return IconBrandLinkedin;
       case 'Resume': return IconFileCv;
       default: return IconMail;
+    }
+  };
+
+  const getHoverCommand = (label: string) => {
+    switch (label) {
+      case 'GitHub': return 'ssh github';
+      case 'LinkedIn': return 'open linkedin';
+      case 'Resume': return 'cat resume.pdf';
+      default: return 'ssh mail';
     }
   };
 
@@ -60,6 +71,8 @@ export function Footer() {
                     rel="noopener noreferrer"
                     className="text-theme-text-muted transition-colors hover:text-theme-accent"
                     aria-label={link.label}
+                    onMouseEnter={() => setHoveredCommand(getHoverCommand(link.label))}
+                    onMouseLeave={() => setHoveredCommand(null)}
                   >
                     <Icon size={20} stroke={1.5} />
                   </a>
@@ -70,6 +83,8 @@ export function Footer() {
             <button
               onClick={scrollToTop}
               className="group flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-theme-text-muted transition-colors hover:text-theme-accent"
+              onMouseEnter={() => setHoveredCommand('cd ~')}
+              onMouseLeave={() => setHoveredCommand(null)}
             >
               <span>Back to Top</span>
               <IconArrowUp size={14} className="transition-transform group-hover:-translate-y-1" />

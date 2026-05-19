@@ -1,11 +1,18 @@
 import { Link } from 'react-router-dom';
-
 import { Post } from '../data/posts';
+import { useTerminal } from '../context/TerminalContext';
 
 export function PostCard({ post }: { post: Post }) {
+  const { setHoveredCommand } = useTerminal();
+
   return (
     <div className="w-full pb-6">
-      <Link to={`/posts/${post.id}`} className="group block w-full">
+      <Link 
+        to={`/posts/${post.id}`} 
+        className="group block w-full"
+        onMouseEnter={() => setHoveredCommand(`posts/${post.id}`)}
+        onMouseLeave={() => setHoveredCommand(null)}
+      >
         <article className="relative flex w-full flex-col gap-3.5 rounded-2xl border border-theme-accent/10 bg-theme-bg/40 p-6 shadow-lg backdrop-blur-sm">
           {/* Top Metadata */}
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11px] font-semibold tracking-wider text-theme-text-muted/60 uppercase">

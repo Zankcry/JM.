@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { primaryNavLinks } from '../data/navigation';
 import { AccentSwitcher } from './AccentSwitcher';
 import { ThemeSwitcher } from './ThemeSwitcher';
+import { useTerminal } from '../context/TerminalContext';
 
 const TRANSLATIONS: Record<string, string> = {
   Home: 'ホーム',
@@ -46,7 +47,20 @@ function TerminalHomeButton({
       typingTimer.current = null;
     }
 
-    const target = hoverCommand ? `cd ${hoverCommand}` : '';
+    let target = '';
+    if (hoverCommand) {
+      if (
+        hoverCommand.startsWith('cd ') ||
+        hoverCommand.startsWith('open ') ||
+        hoverCommand.startsWith('cat ') ||
+        hoverCommand.startsWith('git ') ||
+        hoverCommand.startsWith('ssh ')
+      ) {
+        target = hoverCommand;
+      } else {
+        target = `cd ${hoverCommand}`;
+      }
+    }
     setTyping(true);
 
     typingTimer.current = setInterval(() => {
@@ -116,7 +130,7 @@ function TerminalHomeButton({
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [hoveredCommand, setHoveredCommand] = useState<string | null>(null);
+  const { hoveredCommand, setHoveredCommand } = useTerminal();
   const location = useLocation();
 
   useEffect(() => {

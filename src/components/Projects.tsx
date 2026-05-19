@@ -4,9 +4,11 @@ import { IconExternalLink, IconBrandGithub, IconArrowRight, IconHeart } from '@t
 import { projects } from '../data/projects';
 import { ProjectPreview } from './ProjectPreview';
 import { techStack, techStackIcons } from '../data/tech';
+import { useTerminal } from '../context/TerminalContext';
 
 export function Projects() {
   const [isHeartFilled, setIsHeartFilled] = useState(false);
+  const { setHoveredCommand } = useTerminal();
 
   return (
     <section id="projects" className="w-full pb-10">
@@ -31,6 +33,8 @@ export function Projects() {
         </div>
         <Link
           to="/projects"
+          onMouseEnter={() => setHoveredCommand('projects')}
+          onMouseLeave={() => setHoveredCommand(null)}
           className="group flex items-center gap-2 whitespace-nowrap text-sm font-medium text-theme-text-muted transition-colors hover:text-theme-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-theme-focus focus-visible:ring-offset-2 focus-visible:ring-offset-theme-bg rounded-md px-1"
         >
           View all projects
@@ -44,6 +48,8 @@ export function Projects() {
             key={i}
             id={i === 0 ? 'project-1' : undefined}
             className="group relative flex flex-col overflow-hidden rounded-xl border border-theme-accent/20 bg-theme-bg shadow-lg transition-all hover:border-theme-accent/50"
+            onMouseEnter={() => setHoveredCommand('projects')}
+            onMouseLeave={() => setHoveredCommand(null)}
           >
             <ProjectPreview project={project} />
 
