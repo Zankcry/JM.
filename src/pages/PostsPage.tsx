@@ -61,7 +61,7 @@ export default function PostsPage() {
         {/* Premium Segmented Tab Control */}
         <div className="flex justify-start">
           <div
-            className="relative inline-flex p-1.5 rounded-2xl border border-theme-accent/10"
+            className="relative inline-flex p-1.5 rounded-2xl border border-theme-accent/10 shadow-md"
             role="radiogroup"
           >
             <button
