@@ -15,4 +15,28 @@ export const projects = [
     tags: ['Angular', 'TypeScript', 'TailwindCSS'],
     links: { github: 'https://github.com/Zankcry/prelim-project-JM', live: 'https://prelim-project-jm.vercel.app' }
   },
+  {
+    title: 'Yomi (読み)',
+    description: 'A cross-platform light novel and web novel reader application built with Flutter, integrated with a custom PHP backend API. Features user authentication, library management, and progress tracking.',
+    image: '/videos/project_3.webp',
+    poster: '/images/project_poster_3.png',
+    tags: ['Flutter', 'Dart', 'PHP', 'MySQL'],
+    links: { github: 'https://github.com/Zankcry/Yomi', live: 'https://yomi.infinityfreeapp.com/' }
+  },
+  {
+    title: 'Freedom Wall',
+    description: 'An interactive anonymous message board where users can share authentic feelings, support messages, and whispers. Built with Next.js and TailwindCSS v4, using Supabase for real-time data streaming and instant updates.',
+    image: '/videos/project_4.webp',
+    poster: '/images/project_poster_4.png',
+    tags: ['Next.js', 'React', 'TailwindCSS', 'Supabase', 'TypeScript'],
+    links: { github: 'https://github.com/Zankcry/freedom-wall', live: 'https://freedom-wall-three.vercel.app/' }
+  },
+  {
+    title: 'Hubspot Coffee',
+    description: 'A premium static and interactive website for Hubspot Coffee. Features a custom dark-themed Leaflet map integration, smooth AOS animations, responsive product lists, and custom customer message boards.',
+    image: '/videos/project_5.webp',
+    poster: '/images/project_poster_5.png',
+    tags: ['HTML5', 'TailwindCSS', 'JavaScript'],
+    links: { github: 'https://github.com/Zankcry/HubSpot-Coffee', live: 'https://hub-spot-coffee.vercel.app/index.html' }
+  },
 ];

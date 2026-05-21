@@ -76,7 +76,7 @@ export function Projects() {
                 {project.description}
               </p>
 
-              <div className="mt-auto pt-6 flex flex-wrap gap-2">
+              <div className="pt-6 flex flex-wrap gap-2 flex-grow items-start">
                 {project.tags.map((tag) => {
                   const tech = techStack.find(t => 
                     t.label.toLowerCase() === tag.toLowerCase() || 

@@ -13,6 +13,9 @@ import {
   IconBrandFirebase,
   IconBrandSupabase,
   IconBrandVercel,
+  IconBrandFlutter,
+  IconCode,
+  IconBrandNextjs,
 } from '@tabler/icons-react';
 
 export type TechIconType = 
@@ -29,7 +32,10 @@ export type TechIconType =
   | 'brand-mysql' 
   | 'brand-firebase' 
   | 'brand-supabase' 
-  | 'brand-vercel';
+  | 'brand-vercel'
+  | 'brand-flutter'
+  | 'code'
+  | 'brand-nextjs';
 
 export type TechStackItem = {
   label: string;
@@ -53,6 +59,9 @@ export const techStack: TechStackItem[] = [
   { label: 'Firebase', shortLabel: 'FB', tone: '#FFCA28', icon: 'brand-firebase' },
   { label: 'Supabase', shortLabel: 'Supa', tone: '#3ECF8E', icon: 'brand-supabase' },
   { label: 'Vercel', shortLabel: 'Ver', tone: '#000000', icon: 'brand-vercel' },
+  { label: 'Flutter', shortLabel: 'Flu', tone: '#02569B', icon: 'brand-flutter' },
+  { label: 'Dart', shortLabel: 'Dart', tone: '#00CC76', icon: 'code' },
+  { label: 'Next.js', shortLabel: 'Next', tone: '#FFFFFF', icon: 'brand-nextjs' },
 ];
 
 export const techStackIcons = {
@@ -70,4 +79,7 @@ export const techStackIcons = {
   'brand-firebase': IconBrandFirebase,
   'brand-supabase': IconBrandSupabase,
   'brand-vercel': IconBrandVercel,
+  'brand-flutter': IconBrandFlutter,
+  'code': IconCode,
+  'brand-nextjs': IconBrandNextjs,
 };
