@@ -21,6 +21,25 @@ function AnimatedRoutes() {
     }
   }, []);
 
+  useEffect(() => {
+    const hash = location.hash;
+    if (!hash) return;
+
+    let attempts = 0;
+    const tryScroll = () => {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (attempts < 10) {
+        attempts++;
+        setTimeout(tryScroll, 100);
+      }
+    };
+
+    const timer = setTimeout(tryScroll, 300);
+    return () => clearTimeout(timer);
+  }, [location.pathname, location.hash]);
+
   return (
     <AnimatePresence
       mode="wait"

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { IconNews, IconStar, IconBook, IconPlayerPlay, IconCheck, IconHeart, IconX } from '@tabler/icons-react';
 import { PostCard } from '../components/PostCard';
@@ -10,6 +11,16 @@ export default function PostsPage() {
   const [recCategory, setRecCategory] = useState<'manga' | 'anime'>('manga');
   const [showTastePopup, setShowTastePopup] = useState(false);
   const [isNoHovered, setIsNoHovered] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === '#recs' || location.hash === '#manga') {
+      setActiveTab('recs');
+      if (location.hash === '#manga') {
+        setRecCategory('manga');
+      }
+    }
+  }, [location.hash]);
 
   const recData = recCategory === 'manga' ? mangaRecommendations : animeRecommendations;
 
@@ -59,7 +70,7 @@ export default function PostsPage() {
         </header>
 
         {/* Premium Segmented Tab Control */}
-        <div className="flex justify-start">
+        <div id="recs" className="flex justify-start">
           <div
             className="relative inline-flex p-1.5 rounded-2xl border border-theme-accent/10 shadow-md"
             role="radiogroup"

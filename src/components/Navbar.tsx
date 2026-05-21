@@ -255,7 +255,7 @@ export function Navbar() {
       />
 
       <aside className="fixed left-[5rem] top-1/2 z-50 hidden -translate-x-1/2 -translate-y-1/2 lg:block">
-        <nav className="flex flex-col items-center gap-7" aria-label="Section navigation">
+        <nav className="flex flex-col items-center gap-1" aria-label="Section navigation">
           {primaryNavLinks.map((link) => {
             const isInternal = link.href.startsWith('/') || link.href.startsWith('#');
             const href = link.href === '#projects' ? '/projects' : link.href;
@@ -266,11 +266,9 @@ export function Navbar() {
 
             // Move overflow-hidden and 3D perspective inside the slide wrapper
             const content = (
-              <motion.div
+              <div
                 className="relative h-[1.375rem] select-none flex items-center justify-center"
                 style={{ perspective: '600px' }}
-                initial="initial"
-                whileHover="hover"
               >
                 {/* English face */}
                 <motion.span
@@ -280,7 +278,7 @@ export function Navbar() {
                     initial: { y: 0, opacity: 1, rotateX: 0 },
                     hover: { y: -10, opacity: 0, rotateX: 90 }
                   }}
-                  transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                 >
                   {link.label}
                 </motion.span>
@@ -296,7 +294,7 @@ export function Navbar() {
                 >
                   {jpLabel}
                 </motion.span>
-              </motion.div>
+              </div>
             );
 
             return isInternal ? (
@@ -306,16 +304,21 @@ export function Navbar() {
                 onClick={() => handleLinkClick(href)}
                 onMouseEnter={() => setHoveredCommand(link.label.toLowerCase())}
                 onMouseLeave={() => setHoveredCommand(null)}
-                // Removed overflow-hidden to allow indicator visibility, added pb-1.5 gutter
-                className="group relative block pb-1.5 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-theme-focus focus-visible:ring-offset-2 focus-visible:ring-offset-theme-bg rounded px-2"
+                className="group relative block text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-theme-focus focus-visible:ring-offset-2 focus-visible:ring-offset-theme-bg rounded-xl"
               >
-                {content}
+                <motion.div
+                  className="py-3 px-6"
+                  initial="initial"
+                  whileHover="hover"
+                >
+                  {content}
+                </motion.div>
 
                 {/* Dynamic gliding active marker under the text (scales with layoutId width) */}
                 {isLinkActive && (
                   <motion.span
                     layoutId="active-indicator-underline"
-                    className="absolute bottom-0 left-3 right-3 h-[2px] rounded bg-theme-accent shadow-glow shadow-theme-accent/50"
+                    className="absolute bottom-2 left-6 right-6 h-[2px] rounded bg-theme-accent shadow-glow shadow-theme-accent/50"
                     transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                   />
                 )}
@@ -328,9 +331,15 @@ export function Navbar() {
                 rel="noopener noreferrer"
                 onMouseEnter={() => setHoveredCommand(link.label.toLowerCase())}
                 onMouseLeave={() => setHoveredCommand(null)}
-                className="group relative block pb-1.5 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-theme-focus focus-visible:ring-offset-2 focus-visible:ring-offset-theme-bg rounded px-2"
+                className="group relative block text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-theme-focus focus-visible:ring-offset-2 focus-visible:ring-offset-theme-bg rounded-xl"
               >
-                {content}
+                <motion.div
+                  className="py-3 px-6"
+                  initial="initial"
+                  whileHover="hover"
+                >
+                  {content}
+                </motion.div>
               </a>
             );
           })}
