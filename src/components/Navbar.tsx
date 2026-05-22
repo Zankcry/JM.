@@ -164,7 +164,7 @@ export function Navbar() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-40 w-full pt-5 pb-4 px-5 sm:px-8 lg:px-12">
+      <header className="fixed top-0 left-0 z-40 pt-5 pb-4 px-5 sm:px-8 lg:px-12" style={{ right: 'var(--scrollbar-width, 0px)' }}>
         <div
           className="pointer-events-none absolute inset-x-0 top-0 h-[175%] -z-10 bg-theme-bg/80 backdrop-blur-md"
           style={{

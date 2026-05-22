@@ -37,7 +37,7 @@ export function AccentSwitcher() {
   };
 
   return (
-    <aside className="fixed right-[4.5rem] top-1/2 z-50 hidden -translate-y-1/2 lg:flex xl:right-[4.5rem]">
+    <aside className="fixed top-1/2 z-50 hidden -translate-y-1/2 lg:flex" style={{ right: 'calc(4.5rem + var(--scrollbar-width, 0px))' }}>
       {/* Dynamic Decorative Line (Top) */}
       <div
         aria-hidden="true"

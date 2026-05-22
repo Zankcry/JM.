@@ -121,19 +121,78 @@ export const projects: Project[] = [
   },
   {
     title: 'Yomi (読み)',
-    description: 'A cross-platform light novel and web novel reader application built with Flutter, integrated with a custom PHP backend API. Features user authentication, library management, and progress tracking.',
+    description: 'A clean, ad-free, cross-platform web and light novel reader app with a Tachiyomi-inspired UI, built using Flutter and a PHP/MySQL REST API backend.',
     image: '/videos/project_3.webp',
     poster: '/images/project_poster_3.png',
-    tags: ['Flutter', 'Dart', 'PHP', 'MySQL'],
-    links: { github: 'https://github.com/Zankcry/Yomi', live: 'https://yomi.infinityfreeapp.com/' }
+    tags: ['Flutter', 'Dart', 'PHP', 'MySQL', 'GitHubActions'],
+    links: { github: 'https://github.com/Zankcry/Yomi', live: 'https://yomi.infinityfreeapp.com/' },
+    details: {
+      subtitle: "TACHIYOMI-INSPIRED CROSS-PLATFORM NOVEL READER",
+      detailedDescription: "Yomi (読み) is a clean, ad-free web novel and light novel reader application designed to deliver an immersive and distraction-free reading experience. Drawing inspiration from the popular Tachiyomi interface, Yomi features a responsive dark-themed grid layout, custom reader layouts, and a secure service-oriented PHP/MySQL backend that synchronizes user libraries and reading progress across platforms.",
+      architecture: [
+        {
+          tech: "Flutter (Dart) Frontend",
+          description: "Leverages Flutter's cross-platform engine to deploy a unified, responsive client experience across Web, Windows, and mobile viewports."
+        },
+        {
+          tech: "PHP REST API Backend",
+          description: "Engineered a lightweight, environment-agnostic PHP REST API served locally via Apache/XAMPP and live in production on InfinityFree hosting."
+        },
+        {
+          tech: "MySQL Relational DB",
+          description: "Configured local 'yomi_db' and remote databases tracking user registry tables, novel catalogs, shelf structures, and reading session coordinates."
+        },
+        {
+          tech: "GitHub Actions CI/CD",
+          description: "Configured automated continuous deployment pipelines compiling production Flutter Web builds and pushing files via hosting integrations."
+        }
+      ],
+      keyFeatures: [
+        "📖 Tachiyomi-inspired interface featuring premium dark modes, fluid grid layouts, and clean shelf collections.",
+        "⚡ Distraction-free custom reading view equipped with adjustable font sizes, line heights, and continuous vertical scroll physics.",
+        "🔐 Secure user authentication overlays with robust session handlers, secure registration, and password hashing.",
+        "🔄 Seamless Local & Production Database Sync keeping reading progress and shelf additions aligned across environments.",
+        "📁 Environment-agnostic asset and API routing utilizing relative paths for zero-overhead, modular deployments."
+      ]
+    }
   },
   {
     title: 'Freedom Wall',
-    description: 'An interactive anonymous message board where users can share authentic feelings, support messages, and whispers. Built with Next.js and TailwindCSS v4, using Supabase for real-time data streaming and instant updates.',
+    description: 'A modern, interactive anonymous message board built with Next.js 16 (App Router), React 19, Supabase (PostgreSQL), and Tailwind CSS v4, supporting image uploads and real-time moderation.',
     image: '/videos/project_4.webp',
     poster: '/images/project_poster_4.png',
     tags: ['Next.js', 'React', 'TailwindCSS', 'Supabase', 'TypeScript'],
-    links: { github: 'https://github.com/Zankcry/freedom-wall', live: 'https://freedom-wall-three.vercel.app/' }
+    links: { github: 'https://github.com/Zankcry/freedom-wall', live: 'https://freedom-wall-three.vercel.app/' },
+    details: {
+      subtitle: "REAL-TIME ANONYMOUS EXPRESSION PLATFORM",
+      detailedDescription: "Freedom Wall is a modern, interactive web application designed for community expression. It provides a secure, fully responsive anonymous portal where users can share authentic thoughts, support messages, whispers, and media uploads. Powering the system is Next.js 16 and React 19, featuring custom glassmorphism styling, real-time Postgres synchronization via Supabase, and a server-verified moderation dashboard.",
+      architecture: [
+        {
+          tech: "Next.js 16 (App Router)",
+          description: "Engineered on React 19 and Next.js 16 App Router, utilizing dynamic layouts, strictly-typed API endpoints, and optimized server-side components."
+        },
+        {
+          tech: "Supabase Serverless DB",
+          description: "Integrated Supabase for continuous real-time PostgreSQL database synchronization, instant relational queries, and secure database indexing."
+        },
+        {
+          tech: "Tailwind CSS v4.0",
+          description: "Leverages the cutting-edge Tailwind CSS v4 engine, incorporating customized color transitions, smooth dark/light mode toggling, and glassmorphic card overlays."
+        },
+        {
+          tech: "Administrative Moderation Core",
+          description: "Implemented a password-protected admin dashboard featuring secure server-verified session logins to approve, reject, or soft-delete entries."
+        }
+      ],
+      keyFeatures: [
+        "🎨 Premium Glassmorphic UI featuring minimal visual scrollbars, vibrant gradient cards, and gentle floating background stickers.",
+        "👤 Anonymous Posting enabling visitors to publish entries safely under customized anonymous codenames.",
+        "🖼️ Rich Media Base64 uploads supporting high-quality embedded image shares up to 5MB.",
+        "❤️ LocalStorage-backed vote validation alongside custom CSS micro-animations for real-time post likes.",
+        "💬 Relational, threaded comment feeds supporting nested replies and anonymous poster tags.",
+        "🔄 Soft-deletes and undo actions allowing admins to instantly clean the public board while preserving relational data integrity."
+      ]
+    }
   },
   {
     title: 'Hubspot Coffee',
@@ -141,7 +200,37 @@ export const projects: Project[] = [
     image: '/videos/project_5.webp',
     poster: '/images/project_poster_5.png',
     tags: ['HTML5', 'TailwindCSS', 'JavaScript'],
-    links: { github: 'https://github.com/Zankcry/HubSpot-Coffee', live: 'https://hub-spot-coffee.vercel.app/index.html' }
+    links: { github: 'https://github.com/Zankcry/HubSpot-Coffee', live: 'https://hub-spot-coffee.vercel.app/index.html' },
+    details: {
+      subtitle: "PREMIUM DARK STOREFRONT & INTERACTIVE CAFÉ HUB",
+      detailedDescription: "Hubspot Coffee is a premium, beautifully crafted café web storefront and customer relations mockup designed for a modern café located directly in front of Holy Angel University in Angeles City. Styled with a sleek, desaturated dark aesthetic, the website integrates interactive client capabilities—such as a dynamic shopping cart and customized dark-themed geographic Leaflet map—alongside dedicated dashboard views for loyalty customer lists and customer message records.",
+      architecture: [
+        {
+          tech: "Premium Dark UI & Spacing",
+          description: "Engineered using highly responsive desaturated dark utility blocks, custom scrollbars, Poppins typography, and AOS (Animate On Scroll) to project a premium, cozy café atmosphere."
+        },
+        {
+          tech: "Leaflet.js Dark Cartography",
+          description: "Integrated a custom Leaflet map centered at coordinates [15.13438, 120.59136] utilizing CartoDB Dark Matter tile basemaps and custom CSS gold-filtered map markers."
+        },
+        {
+          tech: "Dynamic Mock API Fetching",
+          description: "Configured mock API endpoint fetch gateways (/products, /customers) that resolve dynamically based on host environments (localhost:3000 vs. live Vercel production api routes)."
+        },
+        {
+          tech: "Interactive Cart & Ratings JS",
+          description: "Implemented custom vanilla JavaScript handling dynamic cart updates, currency price calculation, and interactive click-to-rate star rating states."
+        }
+      ],
+      keyFeatures: [
+        "🗺️ Custom Leaflet.js Map highlighting the café's physical location right in front of Holy Angel University with gold-filtered markers.",
+        "🛒 Interactive Shopping Cart computing real-time PHP totals and supporting dynamic additions and quantity changes.",
+        "⭐ Unique Star Rating System allowing users to rate signature beverages and pastries (Java Chip, Double Strawberry) with instant gold highlight states.",
+        "📋 Live Search Filtering enabling instant real-time searches through products, categories, flavor notes, and loyalty databases.",
+        "📬 Action-Driven Contact Form routing user submissions automatically to customized Email or Social Media mockups based on selected channels.",
+        "👥 Admin CRM Dashboards showcasing full layouts of mock customer loyalty databases and contact records."
+      ]
+    }
   },
 ];
 
