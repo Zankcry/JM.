@@ -1,9 +1,14 @@
+import { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { IconRocket } from '@tabler/icons-react';
-import { projects } from '../data/projects';
+import { projects, Project } from '../data/projects';
 import { FeaturedProjectBanner } from '../components/FeaturedProjectBanner';
 import { ProjectCard } from '../components/ProjectCard';
+import { ProjectDetailModal } from '../components/ProjectDetailModal';
 
 export default function ProjectsPage() {
+  const [activeProject, setActiveProject] = useState<Project | null>(null);
+  
   const featuredProject = projects[0];
   const otherProjects = projects.filter(p => p !== featuredProject);
 
@@ -18,14 +23,33 @@ export default function ProjectsPage() {
       </header>
 
       {/* Hero Section for the featured project */}
-      <FeaturedProjectBanner project={featuredProject} />
+      <FeaturedProjectBanner 
+        project={featuredProject} 
+        onClick={() => setActiveProject(featuredProject)}
+      />
 
       {/* Grid for the rest of the projects */}
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 w-full">
         {otherProjects.map((project, i) => (
-          <ProjectCard key={i} project={project} padding="p-6" />
+          <ProjectCard 
+            key={i} 
+            project={project} 
+            padding="p-6" 
+            onClick={() => setActiveProject(project)}
+          />
         ))}
       </div>
+
+      {/* Elegant AnimatePresence Project Detail Modal */}
+      <AnimatePresence>
+        {activeProject && (
+          <ProjectDetailModal 
+            project={activeProject} 
+            onClose={() => setActiveProject(null)} 
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
+
