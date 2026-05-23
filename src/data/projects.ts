@@ -139,6 +139,12 @@ export const projects: Project[] = [
     poster: '/images/project_poster_3.png',
     tags: ['Flutter', 'Dart', 'PHP', 'MySQL'],
     links: { github: 'https://github.com/Zankcry/Yomi', live: 'https://yomi.infinityfreeapp.com/' },
+    screenshots: [
+      '/images/project3Preview_1.png',
+      '/images/project3Preview_2.png',
+      '/images/project3Preview_3.png',
+      '/images/project3Preview_4.png'
+    ],
     details: {
       subtitle: "TACHIYOMI-INSPIRED CROSS-PLATFORM NOVEL READER",
       detailedDescription: "Yomi (読み) is a clean, ad-free web novel and light novel reader application designed to deliver an immersive and distraction-free reading experience. Drawing inspiration from the popular Tachiyomi interface, Yomi features a responsive dark-themed grid layout, custom reader layouts, and a secure service-oriented PHP/MySQL backend that synchronizes user libraries and reading progress across platforms.",
@@ -176,6 +182,12 @@ export const projects: Project[] = [
     poster: '/images/project_poster_4.png',
     tags: ['Next.js', 'TailwindCSS', 'Supabase', 'TypeScript'],
     links: { github: 'https://github.com/Zankcry/freedom-wall', live: 'https://freedom-wall-three.vercel.app/' },
+    screenshots: [
+      '/images/project4Preview_1.png',
+      '/images/project4Preview_2.png',
+      '/images/project4Preview_3.png',
+      '/images/project4Preview_4.png'
+    ],
     details: {
       subtitle: "REAL-TIME ANONYMOUS EXPRESSION PLATFORM",
       detailedDescription: "Freedom Wall is a modern, interactive web application designed for community expression. It provides a secure, fully responsive anonymous portal where users can share authentic thoughts, support messages, whispers, and media uploads. Powering the system is Next.js 16 and React 19, featuring custom glassmorphism styling, real-time Postgres synchronization via Supabase, and a server-verified moderation dashboard.",
@@ -214,6 +226,12 @@ export const projects: Project[] = [
     poster: '/images/project_poster_5.png',
     tags: ['HTML5', 'TailwindCSS', 'JavaScript'],
     links: { github: 'https://github.com/Zankcry/HubSpot-Coffee', live: 'https://hub-spot-coffee.vercel.app/index.html' },
+    screenshots: [
+      '/images/project5Preview_1.png',
+      '/images/project5Preview_2.png',
+      '/images/project5Preview_3.png',
+      '/images/project5Preview_4.png'
+    ],
     details: {
       subtitle: "PREMIUM DARK STOREFRONT & INTERACTIVE CAFÉ HUB",
       detailedDescription: "Hubspot Coffee is a premium, beautifully crafted café web storefront and customer relations mockup designed for a modern café located directly in front of Holy Angel University in Angeles City. Styled with a sleek, desaturated dark aesthetic, the website integrates interactive client capabilities—such as a dynamic shopping cart and customized dark-themed geographic Leaflet map—alongside dedicated dashboard views for loyalty customer lists and customer message records.",
