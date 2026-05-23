@@ -96,6 +96,12 @@ export const projects: Project[] = [
     poster: '/images/project_poster_2.webp',
     tags: ['Angular', 'TypeScript', 'TailwindCSS'],
     links: { github: 'https://github.com/Zankcry/prelim-project-JM', live: 'https://prelim-project-jm.vercel.app' },
+    screenshots: [
+      '/images/project2Preview_1.png',
+      '/images/project2Preview_2.png',
+      '/images/project2Preview_3.png',
+      '/images/project2Preview_4.png'
+    ],
     details: {
       subtitle: "HOYOVERSE-INSPIRED WEB HUB & TEAM REGISTRY",
       detailedDescription: "Cognosphere / Hoyoverse Hub is a premium, fan-made web storefront designed to capture the majestic visual identity of Hoyoverse's properties (such as Genshin Impact and Honkai: Star Rail). Powered by Angular 18+ and styled dynamically with Tailwind CSS v4, the application acts as an immersive catalog highlighting flagship gaming titles, global corporate milestones, and an active internal employee database.",

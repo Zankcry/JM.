@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 
 type Project = {
     title: string;
@@ -11,9 +10,7 @@ export function ProjectPreview({ project, className }: { project: Project; class
     const [isLoaded, setIsLoaded] = useState(false);
 
     return (
-        <motion.div
-            layoutId={`project-preview-${project.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
-            transition={{ type: 'spring', damping: 25, stiffness: 250 }}
+        <div
             className={`relative overflow-hidden ${className || 'aspect-[16/9] border-b border-theme-accent/20 bg-theme-bg/20'}`}
         >
             {/* Poster Image (Static) */}
@@ -36,6 +33,6 @@ export function ProjectPreview({ project, className }: { project: Project; class
                 className={`h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-105 ${isLoaded ? 'opacity-100' : 'opacity-0'
                     }`}
             />
-        </motion.div>
+        </div>
     );
 }

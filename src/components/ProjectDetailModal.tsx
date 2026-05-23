@@ -84,36 +84,33 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.55, ease: 'easeOut' }}
         onClick={onClose}
         className="absolute inset-0 bg-black/80 backdrop-blur-md"
       />
 
       {/* Outer Wrapper for Modal + Outside Close Button */}
-      <div className="relative z-10 w-full max-w-5xl flex flex-col items-stretch">
+      <div className="relative z-10 w-full max-w-6xl flex flex-col items-stretch">
         
-        {/* Floating Close Button (Outside Modal Box) */}
-        <button
-          onClick={onClose}
-          className="absolute -top-11 right-2 md:-right-12 md:-top-12 z-20 p-2 rounded-full border border-white/10 bg-black/40 text-white/70 hover:text-white hover:border-white/30 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-theme-accent/40"
-          aria-label="Close details"
-        >
-          <IconX size={20} stroke={2} />
-        </button>
-
         {/* Modal Dialog Content Panel */}
         <motion.div
-          initial={{ opacity: 0, y: 30, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 30, scale: 0.98 }}
-          transition={{ type: 'spring', damping: 28, stiffness: 200 }}
-          className="w-full rounded-2xl border border-theme-accent/15 bg-theme-bg shadow-[0_0_50px_-12px_rgb(var(--theme-shadow)/0.4)] overflow-y-auto md:overflow-hidden max-h-[85vh] md:h-[80vh] md:max-h-[720px] p-6 sm:p-8 text-left flex flex-col md:flex-row gap-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.55, ease: 'easeOut' }}
+          className="w-full rounded-xl border border-theme-accent/15 bg-theme-bg shadow-[0_0_50px_-12px_rgb(var(--theme-shadow)/0.4)] overflow-y-auto md:overflow-hidden max-h-[90vh] md:h-[85vh] md:max-h-[800px] p-6 sm:p-8 text-left flex flex-col md:flex-row gap-8"
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-project-title"
         >
           {/* Left Column: Media Presentation */}
-          <div className="flex flex-col gap-6 w-full md:w-[45%] md:h-full md:justify-center md:pr-6 md:border-r md:border-theme-border/10 overflow-y-auto md:overflow-hidden custom-scrollbar">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 12 }}
+            transition={{ duration: 0.65, ease: 'easeOut', delay: 0.1 }}
+            className="flex flex-col gap-6 w-full md:w-[45%] md:h-full md:justify-center md:pr-6 md:border-r md:border-theme-border/10 overflow-y-auto md:overflow-hidden custom-scrollbar"
+          >
             <div className="flex flex-col gap-5">
               
               {/* Premium Preview Component Container - Placed at Top for Strong Visual Impact */}
@@ -193,10 +190,16 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
                 </div>
               )}
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Case Study Narrative & Sticky Footer */}
-          <div className="w-full md:w-[55%] md:h-full flex flex-col justify-between overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 12 }}
+            transition={{ duration: 0.65, ease: 'easeOut', delay: 0.2 }}
+            className="w-full md:w-[55%] md:h-full flex flex-col justify-between overflow-hidden"
+          >
             
             {/* Scrollable Content Container */}
             <div className="overflow-y-auto pr-1 md:pr-3 flex flex-col gap-6 custom-scrollbar pb-6 flex-grow">
@@ -219,11 +222,11 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
 
               {/* Detailed Intro Description */}
               {details?.detailedDescription ? (
-                <p className="text-[13px] sm:text-[14px] leading-relaxed text-theme-text-subtle/95 font-light">
+                <p className="text-sm sm:text-[15px] leading-relaxed text-theme-text-subtle/95 font-light">
                   {details.detailedDescription}
                 </p>
               ) : (
-                <p className="text-[13px] sm:text-[14px] leading-relaxed text-theme-text-subtle/95 font-light">
+                <p className="text-sm sm:text-[15px] leading-relaxed text-theme-text-subtle/95 font-light">
                   {project.description}
                 </p>
               )}
@@ -247,10 +250,10 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
                             <div className="absolute -left-[21px] top-1.5 h-2 w-2 rounded-full border border-theme-accent bg-theme-bg transition-transform duration-300 group-hover/arch:scale-125 group-hover/arch:bg-theme-accent" />
 
                             <div className="flex flex-col gap-1">
-                              <h4 className="text-[11px] font-semibold tracking-wider font-mono text-theme-accent uppercase">
+                              <h4 className="text-[12px] font-semibold tracking-wider font-mono text-theme-accent uppercase">
                                 {item.tech}
                               </h4>
-                              <p className="text-[12px] text-theme-text-subtle leading-relaxed font-light">
+                              <p className="text-[13px] text-theme-text-subtle leading-relaxed font-light">
                                 {item.description}
                               </p>
                             </div>
@@ -274,7 +277,7 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
                           const displayText = match ? match[2] : feature;
 
                           return (
-                            <li key={index} className="flex items-start gap-3 text-[12px] leading-relaxed group/feat">
+                            <li key={index} className="flex items-start gap-3 text-[13px] leading-relaxed group/feat">
                               {displayEmoji ? (
                                 <span className="text-sm shrink-0 -mt-0.5 opacity-90 transition-transform duration-200 group-hover/feat:scale-110">{displayEmoji}</span>
                               ) : (
@@ -307,23 +310,23 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
                                 <IconSearch size={12} stroke={2.5} />
                                 Local SEO Domination
                               </span>
-                              <span className="text-[9px] font-mono text-theme-text-muted uppercase">
+                              <span className="text-[10px] font-mono text-theme-text-muted uppercase">
                                 {details.localSeo.achievement}
                               </span>
                             </div>
                             
-                            <p className="text-[12px] leading-relaxed text-theme-text-subtle font-light">
+                            <p className="text-[13px] leading-relaxed text-theme-text-subtle font-light">
                               {details.localSeo.details}
                             </p>
                             
                             <div className="grid grid-cols-2 gap-2 mt-1">
                               <div className="rounded border border-theme-border/5 bg-theme-bg/40 p-2 flex flex-col gap-0.5">
-                                <span className="text-[8px] font-mono text-theme-text-muted uppercase">Search Query</span>
-                                <span className="text-[10px] font-mono font-semibold text-theme-text truncate">"{details.localSeo.term}"</span>
+                                <span className="text-[9px] font-mono text-theme-text-muted uppercase">Search Query</span>
+                                <span className="text-[11px] font-mono font-semibold text-theme-text truncate">"{details.localSeo.term}"</span>
                               </div>
                               <div className="rounded border border-theme-border/5 bg-theme-bg/40 p-2 flex flex-col gap-0.5">
-                                <span className="text-[8px] font-mono text-theme-text-muted uppercase">Location</span>
-                                <span className="text-[10px] font-mono font-semibold text-theme-text truncate">{details.localSeo.location}</span>
+                                <span className="text-[9px] font-mono text-theme-text-muted uppercase">Location</span>
+                                <span className="text-[11px] font-mono font-semibold text-theme-text truncate">{details.localSeo.location}</span>
                               </div>
                             </div>
                           </div>
@@ -336,21 +339,21 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
                         {/* Analytics Block */}
                         {details.ga4Seo && (
                           <div className="flex flex-col gap-3">
-                            <span className="text-[9px] font-mono text-theme-accent uppercase tracking-wider flex items-center gap-1.5">
+                            <span className="text-[10px] font-mono text-theme-accent uppercase tracking-wider flex items-center gap-1.5">
                               <IconChartBar size={12} stroke={2.5} />
                               GA4 Analytics Loops
                             </span>
                             
                             <div className="flex flex-col gap-3">
                               <div className="flex flex-col gap-1">
-                                <span className="text-[9px] font-bold text-theme-text uppercase tracking-wider font-mono">Strategy & Setup</span>
-                                <p className="text-[12px] leading-relaxed text-theme-text-subtle font-light">
+                                <span className="text-[10px] font-bold text-theme-text uppercase tracking-wider font-mono">Strategy & Setup</span>
+                                <p className="text-[13px] leading-relaxed text-theme-text-subtle font-light">
                                   {details.ga4Seo.implementation}
                                 </p>
                               </div>
                               <div className="flex flex-col gap-1">
-                                <span className="text-[9px] font-bold text-theme-text uppercase tracking-wider font-mono">Results</span>
-                                <p className="text-[12px] leading-relaxed text-theme-text-subtle font-light">
+                                <span className="text-[10px] font-bold text-theme-text uppercase tracking-wider font-mono">Results</span>
+                                <p className="text-[13px] leading-relaxed text-theme-text-subtle font-light">
                                   {details.ga4Seo.results}
                                 </p>
                               </div>
@@ -370,7 +373,7 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
                       <span className="h-1.5 w-1.5 rounded-full bg-theme-accent" />
                       [Project Highlights]
                     </h3>
-                    <p className="text-[12px] text-theme-text-subtle font-light leading-relaxed">
+                    <p className="text-[13px] text-theme-text-subtle font-light leading-relaxed">
                       This standard module features high performance compiling, a light structural core, responsive assets mapping, and clear modular structure.
                     </p>
                   </div>
@@ -414,7 +417,7 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
                 Close Details
               </button>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 
