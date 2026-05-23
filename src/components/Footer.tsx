@@ -114,7 +114,7 @@ export function Footer() {
 
         </div>
 
-        {/* Console Dashboard Panel (FX & Smoke Switchers) */}
+        {/* Console Dashboard Panel (FX Switcher) */}
         <div className="mt-8">
           <div className={[
             "w-full rounded-2xl border px-6 py-4 transition-all duration-300 ease-out",

@@ -118,143 +118,92 @@ summary::-webkit-details-marker {
   }
 }
 
-/* Cyberpunk animated grid pattern background */
-.cyber-pattern {
-  width: 100%;
-  height: 100%;
-  background-color: rgb(var(--theme-bg)); /* Fond dynamique selon le thème */
-  background-attachment: fixed;
-
-  /* C'est ici que la magie opère. On empile plusieurs couches : */
+/* Cyberpunk animated grid pattern background - Optimized */
+.cyber-pattern-layer {
   background-image: 
-    /* 1. La Vignette (Ombre sur les bords adaptative pour l'effet cinéma) */
-    radial-gradient(circle at center, transparent 30%, rgb(var(--theme-shadow) / 0.7) 90%),
-    /* 2. GRILLE PRINCIPALE (Accent - Grande) - Lignes Verticales & Horizontales */
     linear-gradient(rgb(var(--theme-accent) / 0.12) 1px, transparent 1px),
     linear-gradient(90deg, rgb(var(--theme-accent) / 0.12) 1px, transparent 1px),
-    /* 3. GRILLE SECONDAIRE (Accent Fort/Complémentaire - Petite) - Lignes Verticales & Horizontales */
     linear-gradient(rgb(var(--theme-accent-strong) / 0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgb(var(--theme-accent-strong) / 0.06) 1px, transparent 1px);
-
-  /* On définit la taille des grilles */
-  background-size:
-    100% 100%,
-    /* Vignette */ 60px 60px,
-    /* Grande grille (60px) */ 60px 60px,
-    20px 20px,
-    /* Petite grille (20px) */ 20px 20px;
-
-  /* On lance l'animation */
-  animation: cyber-move 10s linear infinite;
+  background-size: 60px 60px, 60px 60px, 20px 20px, 20px 20px;
+  animation: cyber-move-optimized 10s linear infinite;
+  will-change: transform;
 }
 
-/* L'animation qui fait bouger les grilles */
-@keyframes cyber-move {
+.cyber-pattern-vignette {
+  background-image: radial-gradient(circle at center, transparent 30%, rgb(var(--theme-shadow) / 0.7) 90%);
+}
+
+@keyframes cyber-move-optimized {
   0% {
-    background-position:
-      0 0,
-      /* Vignette (ne bouge pas) */ 0 0,
-      0 0,
-      /* Grille Cyan (Départ) */ 0 0,
-      0 0; /* Grille Magenta (Départ) */
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    background-position:
-      0 0,
-      /* Vignette */ 60px 60px,
-      60px 60px,
-      /* Grille Cyan bouge de 60px (1 carreau) */ 40px 40px,
-      40px 40px; /* Grille Magenta bouge de 40px (plus vite/décalé) */
+    transform: translate3d(60px, 60px, 0);
   }
 }
 
 
-/* Dot Matrix glowing background pattern */
-.dot-matrix {
-  width: 100%;
-  height: 100%;
-  background-color: rgb(var(--theme-bg));
-  background-attachment: fixed;
-  
-  background-image: 
-    /* 1. Vignette shadow to fade dots at viewport edges */
-    radial-gradient(circle at center, transparent 40%, rgb(var(--theme-bg)) 95%),
-    /* 2. Micro Dot Grid */
-    radial-gradient(rgb(var(--theme-accent) / 0.18) 1.5px, transparent 1.5px);
-  
-  background-size: 100% 100%, 24px 24px;
-  animation: dot-drift 24s linear infinite;
+/* Dot Matrix glowing background pattern - Optimized */
+.dot-matrix-layer {
+  background-image: radial-gradient(rgb(var(--theme-accent) / 0.18) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  animation: dot-drift-optimized 24s linear infinite;
+  will-change: transform;
 }
 
-@keyframes dot-drift {
+.dot-matrix-vignette {
+  background-image: radial-gradient(circle at center, transparent 40%, rgb(var(--theme-bg)) 95%);
+}
+
+@keyframes dot-drift-optimized {
   0% {
-    background-position: 0 0, 0 0;
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    background-position: 0 0, 24px 24px;
+    transform: translate3d(24px, 24px, 0);
   }
 }
 
-/* Retro Scanlines background pattern */
-.retro-scanlines {
-  width: 100%;
-  height: 100%;
-  background-color: rgb(var(--theme-bg));
-  background-attachment: fixed;
-  
-  background-image: 
-    /* 1. Subtle horizontal scanlines using dynamic text colors */
-    linear-gradient(rgb(var(--theme-text) / 0.04) 50%, transparent 50%),
-    /* 2. Soft radial vignette for vintage screen look */
-    radial-gradient(circle at center, transparent 35%, rgb(var(--theme-bg)) 95%);
-  
-  background-size: 100% 4px, 100% 100%;
-  animation: scanline-scroll 12s linear infinite;
+/* Retro Scanlines background pattern - Optimized */
+.retro-scanlines-layer {
+  background-image: linear-gradient(rgb(var(--theme-text) / 0.04) 50%, transparent 50%);
+  background-size: 100% 4px;
+  animation: scanline-scroll-optimized 12s linear infinite;
+  will-change: transform;
 }
 
-@keyframes scanline-scroll {
+.retro-scanlines-vignette {
+  background-image: radial-gradient(circle at center, transparent 35%, rgb(var(--theme-bg)) 95%);
+}
+
+@keyframes scanline-scroll-optimized {
   0% {
-    background-position: 0 0, 0 0;
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    background-position: 0 40px, 0 0;
+    transform: translate3d(0, 40px, 0);
   }
 }
 
-/* Tech Hexagon Blueprint background pattern */
-.hex-blueprint {
-  position: relative;
-}
-
-.hex-blueprint::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -20;
-  
-  /* 1. Accent color radial gradient so lines fade beautifully near the viewport edges */
+/* Tech Hexagon Blueprint background pattern - Optimized */
+.hex-blueprint-layer {
   background-image: radial-gradient(circle at center, rgb(var(--theme-accent) / 0.12) 30%, transparent 90%);
-  background-attachment: fixed;
-  
-  /* 2. Seamless repeating regular hexagon SVG mask (fully URL-encoded for cross-browser safety) */
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org/2000%2Fsvg%22%20width%3D%2260%22%20height%3D%22104%22%20viewBox%3D%220%200%2060%20104%22%3E%3Cpath%20d%3D%22M30%200%20L0%2017.32%20L0%2051.96%20L30%2069.28%20L30%20104%20M30%200%20L60%2017.32%20M30%2069.28%20L60%2051.96%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221%22%2F%3E%3C%2Fsvg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org/2000%2Fsvg%22%20width%3D%2260%22%20height%3D%22104%22%20viewBox%3D%220%200%2060%20104%22%3E%3Cpath%20d%3D%22M30%200%20L0%2017.32%20L0%2051.96%20L30%2069.28%20L30%20104%20M30%200%20L60%2017.32%20M30%2069.28%20L60%2051.96%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221%22%2F%3E%3C%2Fsvg%3E");
   -webkit-mask-size: 60px 104px;
   mask-size: 60px 104px;
   -webkit-mask-repeat: repeat;
   mask-repeat: repeat;
-  
-  animation: hex-drift 30s linear infinite;
+  animation: hex-drift-optimized 30s linear infinite;
+  will-change: transform;
 }
 
-@keyframes hex-drift {
+@keyframes hex-drift-optimized {
   0% {
-    -webkit-mask-position: 0 0;
-    mask-position: 0 0;
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    -webkit-mask-position: 60px 104px;
-    mask-position: 60px 104px;
+    transform: translate3d(60px, 104px, 0);
   }
 }

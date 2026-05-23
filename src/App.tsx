@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Navbar } from './components/Navbar';
-import { SmokeEffect } from './components/SmokeEffect';
 import { KonamiEasterEgg } from './components/KonamiEasterEgg';
 import HomePage from './pages/HomePage';
 import ProjectsPage from './pages/ProjectsPage';
@@ -12,7 +11,7 @@ import AboutPage from './pages/AboutPage';
 import PicsPage from './pages/PicsPage';
 import { Footer } from './components/Footer';
 import { TerminalProvider } from './context/TerminalContext';
-import { useBackground } from './context/BackgroundContext';
+import { BackgroundLayer } from './components/BackgroundLayer';
 
 
 function AnimatedRoutes() {
@@ -75,34 +74,15 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
-  const { effect, smokeEnabled } = useBackground();
 
   return (
     <TerminalProvider>
       <Router>
-        <div className={[
-          "relative min-h-screen overflow-hidden text-theme-text font-inter selection:bg-theme-accent/30 selection:text-theme-text flex flex-col transition-colors duration-300 ease-out",
-          effect === 'cyber-pattern'
-            ? 'cyber-pattern'
-            : effect === 'dot-matrix'
-            ? 'dot-matrix'
-            : effect === 'retro-scanlines'
-            ? 'retro-scanlines'
-            : effect === 'hex-blueprint'
-            ? 'hex-blueprint'
-            : 'bg-theme-bg'
-        ].join(' ')}>
-          {smokeEnabled && <SmokeEffect />}
-          <KonamiEasterEgg />
+        <div className="relative z-0 min-h-screen overflow-hidden text-theme-text font-inter selection:bg-theme-accent/30 selection:text-theme-text flex flex-col transition-colors duration-300 ease-out">
+          {/* Isolated Hardware-Accelerated Background Pattern */}
+          <BackgroundLayer />
 
-          {/* Background Gradients */}
-          {effect !== 'hex-blueprint' && (
-            <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-              <div className="absolute left-1/2 top-[-7rem] h-72 w-72 -translate-x-1/2 rounded-full bg-theme-accent/10 blur-3xl transition-colors duration-300 ease-out" />
-              <div className="absolute right-[-6rem] top-1/3 h-96 w-96 rounded-full bg-theme-link/10 blur-3xl transition-colors duration-300 ease-out" />
-              <div className="absolute bottom-[-8rem] left-[-4rem] h-80 w-80 rounded-full bg-theme-accent-strong/10 blur-3xl transition-colors duration-300 ease-out" />
-            </div>
-          )}
+          <KonamiEasterEgg />
 
           <Navbar />
 
