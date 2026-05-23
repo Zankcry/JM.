@@ -30,6 +30,7 @@ export type Project = {
     live?: string;
   };
   details?: ProjectDetail;
+  screenshots?: string[];
 };
 
 export const projects: Project[] = [
@@ -40,6 +41,12 @@ export const projects: Project[] = [
     poster: '/images/project_poster_1.webp',
     tags: ['HTML5', 'TailwindCSS', 'JavaScript', 'Firebase'],
     links: { github: 'https://github.com/Zankcry/Barbershop_Website', live: 'https://charliesbarbershop.vercel.app/' },
+    screenshots: [
+      '/images/project1Preview_1.png',
+      '/images/project1Preview_2.png',
+      '/images/project1Preview_3.png',
+      '/images/project1Preview_4.png'
+    ],
     details: {
       subtitle: "PREMIUM WEB STOREFRONT & LOCAL SEARCH DOMINATION",
       detailedDescription: "Charlie's Barber & Salon is a high-performance, responsive static web application showcasing expert grooming services in Angeles City, Pampanga (conveniently located right in front of Holy Angel University). Meticulously crafted with Tailwind CSS and modern design patterns, this storefront bridges physical craftsmanship and digital visual excellence, driving user engagement, secure user registration, and local organic discovery.",
