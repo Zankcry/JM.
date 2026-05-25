@@ -261,7 +261,7 @@ export function Navbar() {
       />
 
       <aside className="fixed left-[5rem] top-1/2 z-50 hidden -translate-x-1/2 -translate-y-1/2 lg:block">
-        <nav className="flex flex-col items-center gap-1" aria-label="Section navigation">
+        <nav className="flex flex-col items-center gap-2" aria-label="Section navigation">
           {primaryNavLinks.map((link) => {
             const isInternal = link.href.startsWith('/') || link.href.startsWith('#');
             const href = link.href === '#projects' ? '/projects' : link.href;
