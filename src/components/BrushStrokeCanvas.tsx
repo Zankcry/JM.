@@ -90,6 +90,27 @@ export function BrushStrokeCanvas() {
       // Allow drawing with left click (button 0) and right click (button 2)
       if (e.button !== 0 && e.button !== 2) return;
 
+      // Ignore clicks on scrollbars
+      if (e.clientX >= document.documentElement.clientWidth || e.clientY >= document.documentElement.clientHeight) {
+        return;
+      }
+
+      // Ignore clicks on interactive elements to prevent drawing over menus, inputs, buttons, etc.
+      const target = e.target as HTMLElement | null;
+      if (target) {
+        if (
+          target.closest('button') ||
+          target.closest('a') ||
+          target.closest('input') ||
+          target.closest('select') ||
+          target.closest('textarea') ||
+          target.closest('[role="button"]') ||
+          target.closest('.interactive')
+        ) {
+          return;
+        }
+      }
+
       const isRight = e.button === 2;
       mouseRef.current = {
         x: e.clientX + window.scrollX,
