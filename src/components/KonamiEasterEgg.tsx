@@ -42,6 +42,7 @@ const KONAMI_SEQUENCE = [
 
 export function KonamiEasterEgg() {
   const [activated, setActivated] = useState(false);
+  const [showText, setShowText] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // Konami code listener
@@ -62,6 +63,7 @@ export function KonamiEasterEgg() {
         if (current === KONAMI_SEQUENCE.length) {
           current = 0;
           setActivated(true);
+          setShowText(false);
         }
       } else {
         current = 0;
@@ -71,6 +73,16 @@ export function KonamiEasterEgg() {
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
   }, []);
+
+  // Text timeout effect
+  useEffect(() => {
+    if (showText) {
+      const t = setTimeout(() => {
+        setShowText(false);
+      }, 3500);
+      return () => clearTimeout(t);
+    }
+  }, [showText]);
 
   // Audio and spritesheet loading and playback loop
   useEffect(() => {
@@ -155,6 +167,7 @@ export function KonamiEasterEgg() {
               lingerTimeoutId = setTimeout(() => {
                 isPlaying = false;
                 setActivated(false);
+                setShowText(true);
               }, 2200);
             }
           }
@@ -183,22 +196,40 @@ export function KonamiEasterEgg() {
   }, [activated]);
 
   return (
-    <AnimatePresence>
-      {activated && (
-        <motion.div
-          className="fixed inset-0 z-[99999] pointer-events-none"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.4 }}
-        >
-          {/* Visible Canvas scaling to cover the full viewport */}
-          <canvas
-            ref={canvasRef}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <>
+      <AnimatePresence>
+        {activated && (
+          <motion.div
+            className="fixed inset-0 z-[99999] pointer-events-none"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+          >
+            {/* Visible Canvas scaling to cover the full viewport */}
+            <canvas
+              ref={canvasRef}
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showText && (
+          <motion.div
+            className="fixed inset-0 z-[99999] flex items-center justify-center pointer-events-none text-center"
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: -20 }}
+            transition={{ type: 'spring', damping: 15 }}
+          >
+            <span className="text-white text-3xl font-bold tracking-wide animate-pulse drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+              Im sorry.. hehe ✌️
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
