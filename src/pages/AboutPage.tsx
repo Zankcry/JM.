@@ -146,7 +146,7 @@ export default function AboutPage() {
         {/* Avatar + quick facts */}
         <div className="flex shrink-0 flex-col items-center gap-6 lg:items-start lg:pt-1">
           <div className="relative">
-            <div className="h-48 w-48 overflow-hidden rounded-xl border-2 border-theme-accent/20 bg-theme-bg shadow-xl">
+            <div className="h-52 w-52 overflow-hidden rounded-xl border-2 border-theme-accent/20 bg-theme-bg shadow-xl">
               <img
                 src="/images/profilePic.jpg"
                 alt="James Michael"
@@ -164,7 +164,7 @@ export default function AboutPage() {
             />
           </div>
 
-          <div className="text-center mt-2 w-full">
+          <div className="text-center mt-1 w-full">
             <p className="text-lg font-semibold text-theme-text">James Michael</p>
             <p className="text-xs font-mono text-theme-text-muted tracking-widest">ジェームズ・マイケル</p>
             <p className="text-sm text-theme-accent">@Zankcry</p>
