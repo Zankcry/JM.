@@ -164,7 +164,7 @@ export function Projects() {
           text-align: left;
           padding: 28px;
           color: #ffffff;
-          background: rgba(15, 15, 20, 0.85);
+          background: rgba(15, 15, 20, 0.55);
           backdrop-filter: blur(16px);
           -webkit-backdrop-filter: blur(16px);
           border: 1px solid rgba(255, 255, 255, 0.15);
