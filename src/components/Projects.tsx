@@ -199,7 +199,10 @@ export function Projects() {
                 exit="exit"
                 className="absolute inset-0 bg-cover bg-center z-0"
                 style={{ backgroundImage: `url(${activeSlideProject.image})` }}
-              />
+              >
+                {/* Cinematic bottom-left gradient overlay to make text highly readable */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/25 to-transparent pointer-events-none" />
+              </motion.div>
             </AnimatePresence>
 
             {/* Sync text content transition with navigation direction */}
@@ -232,7 +235,7 @@ export function Projects() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="absolute bottom-10 left-10 w-[440px] text-left p-7 text-white bg-[rgba(15,15,20,0.55)] backdrop-blur-md border border-theme-accent/20 rounded-xl shadow-2xl z-10 flex flex-col gap-4 max-lg:left-10 max-lg:bottom-[30px] max-lg:w-[380px] max-lg:p-6 max-md:left-5 max-md:right-5 max-md:bottom-6 max-md:w-auto"
+                className="absolute bottom-10 left-10 w-[440px] text-left p-7 text-white z-10 flex flex-col gap-4 max-lg:left-10 max-lg:bottom-[30px] max-lg:w-[380px] max-lg:p-6 max-md:left-5 max-md:right-5 max-md:bottom-6 max-md:w-auto"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="text-2xl font-bold leading-tight">{activeSlideProject.title}</div>
