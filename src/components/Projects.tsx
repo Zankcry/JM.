@@ -281,7 +281,13 @@ export function Projects() {
           </div>
 
           {/* Cards 3-6: The 4 screenshot previews wrapped in an infinite marquee scroller */}
-          <div className="absolute left-[480px] bottom-10 right-0 h-[175px] z-10 overflow-hidden bg-transparent max-lg:left-[440px] max-lg:bottom-[30px] max-lg:h-[135px] max-md:hidden">
+          <div
+            className="absolute left-[480px] bottom-10 right-0 h-[175px] z-10 overflow-hidden bg-transparent max-lg:left-[440px] max-lg:bottom-[30px] max-lg:h-[135px] max-md:hidden"
+            style={{
+              maskImage: 'linear-gradient(to right, transparent, white 50px)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent, white 50px)'
+            }}
+          >
             <div
               className="flex gap-5 overflow-x-auto overflow-y-hidden w-full h-full pt-2.5 pb-2.5 pl-5 pr-[120px] items-end [scrollbar-width:none] [-ms-overflow-style:none] bg-transparent [&::-webkit-scrollbar]:hidden max-lg:pl-5 max-lg:pr-[100px]"
               ref={scrollRef}
@@ -361,11 +367,10 @@ export function Projects() {
               onClick={() => goToProjectIndex(idx)}
               onMouseEnter={() => setHoveredCommand(`go to project ${idx + 1}`)}
               onMouseLeave={() => setHoveredCommand(isHovered ? `open projects/${activeProjectSlug}` : null)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-theme-accent ${
-                activeIndex === idx 
-                  ? 'bg-theme-accent w-5' 
-                  : 'bg-white/40 hover:bg-white/70'
-              }`}
+              className={`w-2 h-2 rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-theme-accent ${activeIndex === idx
+                ? 'bg-theme-accent w-5'
+                : 'bg-white/40 hover:bg-white/70'
+                }`}
               aria-label={`Go to project ${idx + 1}`}
               title={proj.title}
             />
