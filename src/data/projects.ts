@@ -95,7 +95,7 @@ export const projects: Project[] = [
     image: '/videos/project_2.webp',
     poster: '/images/project_poster_2.webp',
     tags: ['Angular', 'TypeScript', 'TailwindCSS'],
-    links: { github: 'https://github.com/Zankcry/prelim-project-JM', live: 'https://prelim-project-jm.vercel.app' },
+    links: { github: 'https://github.com/Zankcry/prelim-project-JM', live: 'https://hoyoverse-hub.vercel.app' },
     screenshots: [
       '/images/project2Preview_1.png',
       '/images/project2Preview_2.png',
