@@ -7,6 +7,7 @@ import {
   IconBrandInstagram,
   IconFileCv,
   IconAddressBook,
+  IconMail,
 } from '@tabler/icons-react';
 import { techStack, techStackIcons } from '../data/tech';
 import { useTerminal } from '../context/TerminalContext';
@@ -17,6 +18,7 @@ const socialIcons = {
   'brand-instagram': IconBrandInstagram,
   'file-cv': IconFileCv,
   user: IconAddressBook,
+  mail: IconMail,
 } as const;
 
 export function Hero() {
@@ -66,7 +68,7 @@ export function Hero() {
               </motion.span>
             </div>
             <video
-              className="h-14 w-14 rounded-2xl object-cover transition-transform duration-500 ease-out group-hover/name:translate-x-20 sm:h-16 sm:w-16"
+              className="h-14 w-14 rounded-2xl object-cover transition-transform duration-500 ease-out group-hover/name:translate-x-24 sm:h-16 sm:w-16"
               autoPlay
               loop
               muted
@@ -81,22 +83,22 @@ export function Hero() {
 
         <div className="mt-8 max-w-3xl space-y-5 text-base leading-8 text-theme-text-muted sm:text-lg">
           <p>
-            I&apos;m an IT undergraduate specializing in Web Development. I currently build websites for personal projects and local businesses like helping a local <a 
-              href="#project-1" 
+            I&apos;m an IT undergraduate specializing in Web Development. I currently build websites for personal projects and local businesses like helping a local <a
+              href="#project-1"
               className="text-theme-accent px-1.5 py-0.5 rounded-md transition-colors hover:bg-theme-accent/20"
               onMouseEnter={() => setHoveredCommand('open projects/charlies-barber-salon')}
               onMouseLeave={() => setHoveredCommand(null)}
             >Barbershop</a> increase their online awareness.
           </p>
           <p>
-            Right now, my main focus is learning <a 
-              href="https://esotericsoftware.com/" 
-              className="text-theme-accent px-1.5 py-0.5 rounded-md transition-colors hover:bg-theme-accent/20" 
-              target="_blank" 
+            Right now, my main focus is learning <a
+              href="https://esotericsoftware.com/"
+              className="text-theme-accent px-1.5 py-0.5 rounded-md transition-colors hover:bg-theme-accent/20"
+              target="_blank"
               rel="noreferrer"
               onMouseEnter={() => setHoveredCommand('open spine2d')}
               onMouseLeave={() => setHoveredCommand(null)}
-            >Spine 2D</a> and crafting unique UI experiences for future projects. I just love creating and developing websites with unique visuals.
+            >Spine 2D</a> and crafting unique UI experiences for future projects. I&apos;m currently seeking web development internships to contribute and grow.
           </p>
         </div>
 
@@ -110,6 +112,7 @@ export function Hero() {
             if (link.label === 'GitHub') cmd = 'open github';
             else if (link.label === 'LinkedIn') cmd = 'open linkedin';
             else if (link.label === 'Resume') cmd = 'cat resume.pdf';
+            else if (link.label === 'Mail') cmd = 'ssh mail';
             else if (link.label === 'More about me...') cmd = 'about';
             else if (isInternal) cmd = link.href.replace(/^\//, '');
             else cmd = `open ${link.label.toLowerCase()}`;

@@ -18,6 +18,7 @@ export function Footer() {
       case 'GitHub': return IconBrandGithub;
       case 'LinkedIn': return IconBrandLinkedin;
       case 'Resume': return IconFileCv;
+      case 'Mail': return IconMail;
       default: return IconMail;
     }
   };
@@ -27,6 +28,7 @@ export function Footer() {
       case 'GitHub': return 'open github';
       case 'LinkedIn': return 'open linkedin';
       case 'Resume': return 'cat resume.pdf';
+      case 'Mail': return 'ssh mail';
       default: return 'ssh mail';
     }
   };

@@ -69,7 +69,7 @@ export function RecentActivity() {
             onMouseLeave={() => setHoveredCommand(null)}
             className="group flex items-center gap-2 whitespace-nowrap text-sm font-medium text-theme-text-muted transition-colors hover:text-theme-accent"
           >
-            All posts
+            View all posts
             <IconArrowRight size={16} stroke={2} className="transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>
