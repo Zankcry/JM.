@@ -197,13 +197,13 @@ export function Navbar() {
             onClick={() => handleLinkClick('#home')}
           />
 
-          <div className="hidden lg:block">
+          <div className="hidden xl:block">
             <ThemeSwitcher id="desktop" />
           </div>
 
           <button
             type="button"
-            className="inline-flex items-center rounded-full border border-theme-border/70 px-3 py-2 text-sm text-theme-text-muted transition hover:bg-theme-surface/70 hover:text-theme-text focus:outline-none focus-visible:ring-2 focus-visible:ring-theme-focus focus-visible:ring-offset-2 focus-visible:ring-offset-theme-bg lg:hidden"
+            className="inline-flex items-center rounded-full border border-theme-border/70 px-3 py-2 text-sm text-theme-text-muted transition hover:bg-theme-surface/70 hover:text-theme-text focus:outline-none focus-visible:ring-2 focus-visible:ring-theme-focus focus-visible:ring-offset-2 focus-visible:ring-offset-theme-bg xl:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             onClick={() => setMenuOpen((current) => !current)}
@@ -215,7 +215,7 @@ export function Navbar() {
         <div
           id="mobile-menu"
           className={[
-            'lg:hidden transition-all duration-200',
+            'xl:hidden transition-all duration-200',
             menuOpen ? 'pointer-events-auto mt-4 max-h-[48rem] opacity-100' : 'pointer-events-none max-h-0 opacity-0',
           ].join(' ')}
         >
@@ -225,6 +225,10 @@ export function Navbar() {
                 {primaryNavLinks.map((link) => {
                   const isInternal = link.href.startsWith('/') || link.href.startsWith('#');
                   const href = link.href === '#projects' ? '/projects' : link.href;
+                  const jpLabel = TRANSLATIONS[link.label] || '';
+                  const isLinkActive = link.href === '/'
+                    ? location.pathname === '/'
+                    : location.pathname.startsWith(href);
 
                   return isInternal ? (
                     <Link
@@ -233,9 +237,17 @@ export function Navbar() {
                       onClick={() => handleLinkClick(href)}
                       onMouseEnter={() => setHoveredCommand(link.label.toLowerCase())}
                       onMouseLeave={() => setHoveredCommand(null)}
-                      className="rounded-2xl px-3 py-2 text-sm text-theme-text-muted transition hover:bg-theme-surface/70 hover:text-theme-text focus:outline-none focus-visible:bg-theme-surface/70"
+                      className={[
+                        "group flex items-center justify-between rounded-2xl px-4 py-2.5 text-sm font-medium transition-all duration-300",
+                        isLinkActive
+                          ? "bg-theme-accent/10 text-theme-accent font-semibold border-l-2 border-theme-accent pl-3.5"
+                          : "text-theme-text-muted hover:bg-theme-surface/75 hover:text-theme-text"
+                      ].join(' ')}
                     >
-                      {link.label}
+                      <span>{link.label}</span>
+                      <span className="font-mono text-[10px] tracking-wider opacity-45 uppercase text-theme-text-muted/80 group-hover:opacity-75 transition-opacity">
+                        {jpLabel}
+                      </span>
                     </Link>
                   ) : (
                     <a
@@ -245,16 +257,29 @@ export function Navbar() {
                       rel="noopener noreferrer"
                       onMouseEnter={() => setHoveredCommand(link.label.toLowerCase())}
                       onMouseLeave={() => setHoveredCommand(null)}
-                      className="rounded-2xl px-3 py-2 text-sm text-theme-text-muted transition hover:bg-theme-surface/70 hover:text-theme-text focus:outline-none focus-visible:bg-theme-surface/70"
+                      className="group flex items-center justify-between rounded-2xl px-4 py-2.5 text-sm font-medium text-theme-text-muted transition-all duration-300 hover:bg-theme-surface/75 hover:text-theme-text"
                     >
-                      {link.label}
+                      <span>{link.label}</span>
+                      <span className="font-mono text-[10px] tracking-wider opacity-45 uppercase text-theme-text-muted/80 group-hover:opacity-75 transition-opacity">
+                        {jpLabel}
+                      </span>
                     </a>
                   );
                 })}
               </nav>
 
+              <div className="h-px w-full bg-gradient-to-r from-transparent via-theme-accent/20 to-transparent my-1" />
 
-              <ThemeSwitcher id="mobile" />
+              <div className="flex flex-col gap-4 px-2 py-1">
+                <ThemeSwitcher id="mobile" />
+
+                <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-4 text-xs sm:text-sm">
+                  <span className="uppercase tracking-[0.35em] text-theme-text-muted/85 shrink-0">Accent</span>
+                  <div className="relative inline-flex items-center rounded-xl border border-theme-accent/20 bg-theme-bg shadow-lg p-1.5 px-2.5">
+                    <AccentSwitcher inline={true} />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -262,16 +287,16 @@ export function Navbar() {
 
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed left-[5rem] top-0 z-50 w-0.5 -translate-x-1/2 bg-gradient-to-b from-theme-accent/50 to-transparent hidden lg:block"
+        className="pointer-events-none fixed left-[5rem] top-0 z-50 w-0.5 -translate-x-1/2 bg-gradient-to-b from-theme-accent/50 to-transparent hidden xl:block"
         style={{ height: 'calc(50vh - 140px)' }}
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed left-[5rem] bottom-0 z-50 w-0.5 -translate-x-1/2 bg-gradient-to-t from-theme-accent/50 to-transparent hidden lg:block"
+        className="pointer-events-none fixed left-[5rem] bottom-0 z-50 w-0.5 -translate-x-1/2 bg-gradient-to-t from-theme-accent/50 to-transparent hidden xl:block"
         style={{ height: 'calc(50vh - 140px)' }}
       />
 
-      <aside className="fixed left-[5rem] top-1/2 z-50 hidden -translate-x-1/2 -translate-y-1/2 lg:block">
+      <aside className="fixed left-[5rem] top-1/2 z-50 hidden -translate-x-1/2 -translate-y-1/2 xl:block">
         <nav className="flex flex-col items-center gap-2" aria-label="Section navigation">
           {primaryNavLinks.map((link) => {
             const isInternal = link.href.startsWith('/') || link.href.startsWith('#');
