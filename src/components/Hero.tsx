@@ -104,7 +104,7 @@ export function Hero() {
 
         <div className="mt-5 flex flex-wrap items-center gap-3 text-sm text-theme-text-muted">
           {socialLinks.map((link) => {
-            const isInternal = link.href.startsWith('/') || link.href.startsWith('#');
+            const isInternal = (link.href.startsWith('/') || link.href.startsWith('#')) && !link.href.endsWith('.pdf');
             const cls = "group flex items-center gap-2 rounded-lg border border-theme-accent/20 bg-theme-bg/50 px-3 py-1.5 text-xs font-medium text-theme-text-muted transition-all hover:border-theme-accent/50 hover:text-theme-text hover:shadow-sm active:scale-95";
 
             // Determine command based on button destination/label
