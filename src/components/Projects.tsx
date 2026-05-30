@@ -147,7 +147,7 @@ export function Projects() {
       </div>
 
       <div
-        className="w-full h-[440px] xl:h-[480px] 2xl:h-[560px] max-lg:h-[420px] max-md:h-[380px] overflow-hidden relative rounded-2xl bg-theme-bg-elevated/30 border border-theme-accent/15 shadow-[0_20px_40px_-15px_rgba(var(--theme-shadow),0.3)] group/slider selection:bg-transparent"
+        className="w-full h-[500px] xl:h-[540px] 2xl:h-[620px] max-lg:h-[480px] max-md:h-[440px] overflow-hidden relative rounded-2xl bg-theme-bg-elevated/30 border border-theme-accent/15 shadow-[0_20px_40px_-15px_rgba(var(--theme-shadow),0.3)] group/slider selection:bg-transparent"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
