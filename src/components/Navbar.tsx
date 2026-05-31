@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { IconMenu2, IconX } from '@tabler/icons-react';
 import { primaryNavLinks } from '../data/navigation';
 import { AccentSwitcher } from './AccentSwitcher';
 import { ThemeSwitcher } from './ThemeSwitcher';
@@ -191,12 +192,22 @@ export function Navbar() {
 
           <button
             type="button"
-            className="inline-flex items-center rounded-full border border-theme-border/70 px-3 py-2 text-sm text-theme-text-muted transition hover:bg-theme-surface/70 hover:text-theme-text focus:outline-none focus-visible:ring-2 focus-visible:ring-theme-focus focus-visible:ring-offset-2 focus-visible:ring-offset-theme-bg xl:hidden"
+            className="inline-flex items-center justify-center rounded-full border border-theme-border/70 p-2 text-theme-text-muted transition hover:bg-theme-surface/70 hover:text-theme-text focus:outline-none focus-visible:ring-2 focus-visible:ring-theme-focus focus-visible:ring-offset-2 focus-visible:ring-offset-theme-bg xl:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             onClick={() => setMenuOpen((current) => !current)}
           >
-            Menu
+            <motion.span
+              key={menuOpen ? 'close' : 'open'}
+              initial={{ opacity: 0, rotate: -90, scale: 0.7 }}
+              animate={{ opacity: 1, rotate: 0, scale: 1 }}
+              exit={{ opacity: 0, rotate: 90, scale: 0.7 }}
+              transition={{ duration: 0.18, ease: 'easeOut' }}
+              style={{ display: 'flex' }}
+            >
+              {menuOpen ? <IconX size={20} stroke={2} /> : <IconMenu2 size={20} stroke={2} />}
+            </motion.span>
           </button>
         </div>
 
