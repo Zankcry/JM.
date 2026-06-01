@@ -142,7 +142,7 @@ export function Hero() {
             {techStack.map((item) => (
               <div
                 key={item.label}
-                className="group flex items-center gap-1.5 rounded-md border border-theme-accent/10 bg-theme-bg/50 px-2 py-1 transition-all hover:border-theme-accent/30 hover:bg-theme-bg"
+                className="group flex items-center gap-1.5 rounded-md border border-theme-accent/10 bg-theme-bg/50 px-2 py-[0.30rem] transition-all hover:border-theme-accent/30 hover:bg-theme-bg"
                 style={{ '--brand-color': item.tone } as React.CSSProperties}
               >
                 <div
@@ -151,10 +151,10 @@ export function Hero() {
                 >
                   {(() => {
                     const TechIcon = techStackIcons[item.icon];
-                    return <TechIcon size={13} stroke={2} aria-hidden="true" />;
+                    return <TechIcon size={14} stroke={2} aria-hidden="true" />;
                   })()}
                 </div>
-                <span className="text-[10px] font-semibold tracking-wide text-theme-text-muted transition-colors group-hover:text-theme-text uppercase">
+                <span className="text-[11px] font-semibold tracking-wide text-theme-text-muted transition-colors group-hover:text-theme-text uppercase">
                   {item.label}
                 </span>
               </div>

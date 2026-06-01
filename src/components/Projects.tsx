@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { IconArrowRight, IconHeart } from '@tabler/icons-react';
+import { IconArrowUpRight, IconHeart } from '@tabler/icons-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projects, Project } from '../data/projects';
 import { techStack, techStackIcons } from '../data/tech';
@@ -103,10 +103,10 @@ export function Projects() {
           to="/projects"
           onMouseEnter={() => setHoveredCommand('projects')}
           onMouseLeave={() => setHoveredCommand(null)}
-          className="group flex shrink-0 items-center gap-2 text-sm font-medium text-theme-text-muted transition-colors hover:text-theme-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-theme-focus focus-visible:ring-offset-2 focus-visible:ring-offset-theme-bg rounded-md px-1"
+          className="group flex shrink-0 items-center gap-1.5 text-sm font-medium text-theme-text-muted transition-colors hover:text-theme-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-theme-focus focus-visible:ring-offset-2 focus-visible:ring-offset-theme-bg rounded-md px-1"
         >
           View All
-          <IconArrowRight size={16} stroke={2} className="transition-transform duration-300 group-hover:translate-x-1" />
+          <IconArrowUpRight size={16} stroke={2} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </Link>
       </div>
 

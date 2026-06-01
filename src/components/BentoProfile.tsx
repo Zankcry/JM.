@@ -149,7 +149,27 @@ export function ConnectCard() {
   );
 }
 
-export function LocationCard({ currentTime }: { currentTime: Date }) {
+function ClockDisplay() {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="flex items-center gap-1 text-[10px] opacity-80">
+      <IconClock size={11} />
+      {time.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+      })}
+    </div>
+  );
+}
+
+export function LocationCard() {
   const { theme } = useTheme();
 
   const mapUrl = theme === 'latte'
@@ -186,14 +206,7 @@ export function LocationCard({ currentTime }: { currentTime: Date }) {
         <div className="text-[11px] font-bold">
           Porac, PH
         </div>
-        <div className="flex items-center gap-1 text-[10px] opacity-80">
-          <IconClock size={11} />
-          {currentTime.toLocaleTimeString('en-US', {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: true
-          })}
-        </div>
+        <ClockDisplay />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  IconArrowRight,
+  IconArrowUpRight,
   IconBookmark,
   IconPlaylist,
   IconBrandGooglePhotos,
@@ -15,13 +15,7 @@ import { AvailabilityCard, ConnectCard, LocationCard } from './BentoProfile';
 import { useTerminal } from '../context/TerminalContext';
 
 export function RecentActivity() {
-  const [currentTime, setCurrentTime] = useState(new Date());
   const { setHoveredCommand } = useTerminal();
-
-  useEffect(() => {
-    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
-    return () => clearInterval(timer);
-  }, []);
 
   const recentPosts = posts.slice(0, 2);
 
@@ -67,10 +61,10 @@ export function RecentActivity() {
             to="/posts"
             onMouseEnter={() => setHoveredCommand('posts')}
             onMouseLeave={() => setHoveredCommand(null)}
-            className="group flex items-center gap-2 whitespace-nowrap text-sm font-medium text-theme-text-muted transition-colors hover:text-theme-accent"
+            className="group flex items-center gap-1.5 whitespace-nowrap text-sm font-medium text-theme-text-muted transition-colors hover:text-theme-accent"
           >
             View All
-            <IconArrowRight size={16} stroke={2} className="transition-transform duration-300 group-hover:translate-x-1" />
+            <IconArrowUpRight size={16} stroke={2} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>
 
@@ -145,7 +139,7 @@ export function RecentActivity() {
 
                   <div className="mt-4 flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest text-theme-accent">
                     <span>View</span>
-                    <IconArrowRight size={12} />
+                    <IconArrowUpRight size={12} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
                 </div>
               </div>
@@ -153,7 +147,7 @@ export function RecentActivity() {
           ))}
 
           {/* Location map (1x1 square) */}
-          <LocationCard currentTime={currentTime} />
+          <LocationCard />
 
           {/* Row 2 - 2x1 Photo Gallery */}
           <Link
@@ -186,7 +180,7 @@ export function RecentActivity() {
               </div>
               <div className="mt-4 flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest text-theme-accent">
                 <span>View Gallery</span>
-                <IconArrowRight size={12} />
+                <IconArrowUpRight size={12} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
             </div>
           </Link>
