@@ -7,7 +7,8 @@ import {
   IconBrandGooglePhotos,
   IconLanguage,
   IconNews,
-  IconBrandSpotify
+  IconBrandSpotify,
+  IconCompass
 } from '@tabler/icons-react';
 import { posts } from '../data/posts';
 import { PostCard } from './PostCard';
@@ -79,6 +80,7 @@ export function RecentActivity() {
       <div className="flex flex-col gap-6">
         <div className="flex items-center gap-4">
           <h2 className="flex items-center gap-2 whitespace-nowrap text-xl font-medium tracking-tight text-theme-text sm:text-2xl">
+            <IconCompass size={24} className="text-theme-accent" />
             Explore & Connect
           </h2>
           <div className="h-px flex-1 bg-gradient-to-r from-theme-accent/40 to-transparent"></div>
