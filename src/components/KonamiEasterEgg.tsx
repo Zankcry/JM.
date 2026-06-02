@@ -44,6 +44,22 @@ export function KonamiEasterEgg() {
   const [activated, setActivated] = useState(false);
   const [showText, setShowText] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const imgRef = useRef<HTMLImageElement | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Preload foxy assets in the background (only on desktop where it's visible)
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth >= 1024) {
+      const img = new Image();
+      img.src = 'foxy/foxy-jump.png';
+      imgRef.current = img;
+
+      const audio = new Audio('foxy/Xscream3.ogg');
+      audio.preload = 'auto';
+      audio.load();
+      audioRef.current = audio;
+    }
+  }, []);
 
   // Konami code listener
   useEffect(() => {
@@ -88,12 +104,15 @@ export function KonamiEasterEgg() {
   useEffect(() => {
     if (!activated) return;
 
-    // Load elements
-    const img = new Image();
-    img.src = 'foxy/foxy-jump.png';
+    // Use preloaded elements if available
+    const img = imgRef.current || new Image();
+    if (!imgRef.current) {
+      img.src = 'foxy/foxy-jump.png';
+    }
 
-    const audio = new Audio('foxy/Xscream3.ogg');
+    const audio = audioRef.current || new Audio('foxy/Xscream3.ogg');
     audio.volume = 1;
+    audio.currentTime = 0;
     audio.play().catch(err => {
       console.warn('Audio autoplay prevented or failed:', err);
     });
