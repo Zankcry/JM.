@@ -1,6 +1,6 @@
 # JM.
 
-My personal 2nd ver. web portfolio, to showcase my skills, projects, and memories throughout my experience in college and my journey as a web developer. Inspired by many developers, portfolio sites, youtube portfolio reviews and my love for the japanese culture and language.
+My personal 2nd ver. web portfolio JM.(James Michael), to showcase my skills, projects, and memories throughout my experience in college and my journey as a web developer. Inspired by many developers, portfolio sites, youtube portfolio reviews and my love for the japanese culture and language.
 
 ![Website Preview](./public/images/website.png)
 
