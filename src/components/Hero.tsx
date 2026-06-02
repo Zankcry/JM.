@@ -9,6 +9,7 @@ import {
   IconAddressBook,
   IconMail,
 } from '@tabler/icons-react';
+import { Tooltip } from './Tooltip';
 import { techStack, techStackIcons } from '../data/tech';
 import { useTerminal } from '../context/TerminalContext';
 
@@ -36,7 +37,23 @@ export function Hero() {
           id="hero-title"
           className="flex max-w-3xl flex-wrap items-center gap-x-3 gap-y-2 text-3xl font-semibold leading-[1.1] tracking-snug text-theme-text sm:text-4xl lg:text-5xl"
         >
-          <span>Yahho! I&apos;m</span>
+          <span>
+            <Tooltip
+              content={
+                <span className="block font-sans text-center">
+                  <strong className="text-theme-accent">やっほー (Yahho!)</strong>
+                  <span className="block mt-1 text-[11px] leading-normal text-theme-text-muted">
+                    A friendly, casual Japanese greeting meaning <span className="text-theme-text">"Yo!"</span>, <span className="text-theme-text">"Hey!"</span>, or <span className="text-theme-text">"Hi!"</span>.
+                  </span>
+                </span>
+              }
+            >
+              <span className="border-b border-dashed border-theme-accent/50 pb-0.5 transition-colors hover:text-theme-accent">
+                Yahho!
+              </span>
+            </Tooltip>{' '}
+            I&apos;m
+          </span>
           <span className="inline-flex items-center gap-2 whitespace-nowrap">
             <span className="text-theme-accent ml-0 sm:ml-3">
               James Michael
