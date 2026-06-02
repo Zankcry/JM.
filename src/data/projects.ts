@@ -1,5 +1,6 @@
 export type ProjectDetail = {
   subtitle?: string;
+  role?: string;
   detailedDescription?: string;
   architecture?: {
     tech: string;
@@ -49,6 +50,7 @@ export const projects: Project[] = [
     ],
     details: {
       subtitle: "LOCAL BARBERSHOP STOREFRONT & LOCAL SEO OPTIMIZATION",
+      role: "Lead Developer",
       detailedDescription: "Charlie's Barber & Salon is a fast, responsive website displaying barbering and grooming services in Angeles City, Pampanga (conveniently located right in front of Holy Angel University). Built with Tailwind CSS and vanilla JavaScript, it handles user accounts, booking links, and local search discovery.",
       architecture: [
         {
@@ -60,7 +62,7 @@ export const projects: Project[] = [
           description: "Styled with a modern dark theme and custom glassmorphic cards, keeping the stylesheet small and quick to load."
         },
         {
-          tech: "Firebase Auth & SDK v10",
+          tech: "Firebase Auth",
           description: "Allows clients to sign up and log in securely using Google accounts or their email and password."
         },
         {
@@ -104,6 +106,7 @@ export const projects: Project[] = [
     ],
     details: {
       subtitle: "HOYOVERSE-THEMED FAN PORTAL & EMPLOYEE DIRECTORY",
+      role: "Lead Developer",
       detailedDescription: "Cognosphere / Hoyoverse Hub is a fan-made website inspired by Hoyoverse games like Genshin Impact and Honkai: Star Rail. It is built with Angular 18 and Tailwind CSS, displaying game catalogs, global milestones, and an active employee directory.",
       architecture: [
         {
@@ -147,6 +150,7 @@ export const projects: Project[] = [
     ],
     details: {
       subtitle: "TACHIYOMI-INSPIRED CROSS-PLATFORM NOVEL READER",
+      role: "Lead Developer",
       detailedDescription: "Yomi is a clean, ad-free web novel and light novel reader application designed for a comfortable, distraction-free reading experience. Drawing inspiration from the popular Tachiyomi interface, Yomi features a responsive dark-themed grid layout, custom reader layouts, and a PHP/MySQL backend that synchronizes user libraries and reading progress across devices.",
       architecture: [
         {
@@ -190,6 +194,7 @@ export const projects: Project[] = [
     ],
     details: {
       subtitle: "REAL-TIME ANONYMOUS EXPRESSION PLATFORM",
+      role: "Solo Developer",
       detailedDescription: "Freedom Wall is an interactive web app where users can share authentic thoughts, support messages, and media uploads anonymously. Built using Next.js 16 and React 19, the site features modern glassmorphism styling, real-time database synchronization via Supabase, and a secure moderation dashboard.",
       architecture: [
         {
@@ -234,6 +239,7 @@ export const projects: Project[] = [
     ],
     details: {
       subtitle: "DARK CAFÉ STOREFRONT & CLIENT DASHBOARD MOCKUP",
+      role: "Lead Developer",
       detailedDescription: "Hubspot Coffee is a beautifully designed café website and client dashboard mockup for a modern coffee shop located in front of Holy Angel University in Angeles City. Styled with a cozy dark theme, the site features an interactive shopping cart, a custom dark Leaflet map, and dedicated admin dashboard panels for loyalty customers and feedback records.",
       architecture: [
         {
@@ -278,6 +284,7 @@ export const projects: Project[] = [
     ],
     details: {
       subtitle: "CINEMATIC TERMINAL PICTURE-IN-PICTURE ENGINE",
+      role: "Solo Developer",
       detailedDescription: "Simple Player is a browser extension I vibe coded that uses the modern Document Picture-in-Picture API to pull videos out of their webpages and place them in a floating, fully controllable cinematic window. Designed to support tricky targets like nested iframes, Reels, and Shadow DOM elements, it provides a universal and smooth desktop playback experience with a terminal-style theme.",
       architecture: [
         {

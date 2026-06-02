@@ -226,6 +226,12 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
                 <h2 id="modal-project-title" className="text-2xl sm:text-3xl font-extrabold tracking-tight text-theme-text leading-tight">
                   {project.title}
                 </h2>
+                {details?.role && (
+                  <div className="flex items-center gap-1.5 mt-0.5">
+                    <span className="text-[9px] font-bold uppercase tracking-wider text-theme-text-muted/80">Role:</span>
+                    <span className="text-[10px] font-semibold tracking-wide text-theme-accent font-mono bg-theme-accent/10 px-2 py-0.5 rounded">{details.role}</span>
+                  </div>
+                )}
               </div>
 
               {/* Detailed Intro Description */}
