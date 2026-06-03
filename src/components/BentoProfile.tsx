@@ -122,7 +122,7 @@ export function ConnectCard() {
                 <span className="text-[6px] font-bold uppercase tracking-widest opacity-50">GH</span>
               </a>
               <a
-                href="https://www.linkedin.com/in/james-michael-duque-100154350/"
+                href="https://www.linkedin.com/in/jamesmichaelduque/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group/icon flex h-9 flex-col items-center justify-center gap-0.5 rounded-lg border border-theme-border/40 bg-theme-surface/40 text-theme-text-muted transition-all hover:border-theme-accent/20 hover:bg-theme-surface/70 hover:text-theme-accent"

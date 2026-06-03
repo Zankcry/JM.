@@ -175,7 +175,7 @@ export default function AboutPage() {
           <div className="flex w-full items-center justify-center gap-3 text-theme-text-muted">
             {[
               { icon: IconBrandGithub, href: 'https://github.com/Zankcry', label: 'GitHub', cmd: 'open github' },
-              { icon: IconBrandLinkedin, href: 'https://www.linkedin.com/in/james-michael-duque-100154350/', label: 'LinkedIn', cmd: 'open linkedin' },
+              { icon: IconBrandLinkedin, href: 'https://www.linkedin.com/in/jamesmichaelduque/', label: 'LinkedIn', cmd: 'open linkedin' },
               { icon: IconFileCv, href: '/resume.pdf', label: 'Resume', cmd: 'cat resume.pdf' },
               { icon: IconMail, href: 'mailto:duquejames657@gmail.com', label: 'Mail', cmd: 'ssh mail' },
             ].map(({ icon: Icon, href, label, cmd }) => (
