@@ -121,15 +121,32 @@ export default function AboutPage() {
   const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
+    let active = true;
     const interval = setInterval(() => {
-      setIsFading(true);
-      setTimeout(() => {
-        setRandomPhoto(allPhotos[Math.floor(Math.random() * allPhotos.length)]);
-        setIsFading(false);
-      }, 500);
+      let nextPhotoCandidate = allPhotos[Math.floor(Math.random() * allPhotos.length)];
+      if (allPhotos.length > 1) {
+        while (nextPhotoCandidate.id === randomPhoto.id) {
+          nextPhotoCandidate = allPhotos[Math.floor(Math.random() * allPhotos.length)];
+        }
+      }
+
+      const img = new Image();
+      img.src = nextPhotoCandidate.src;
+      img.onload = () => {
+        if (!active) return;
+        setIsFading(true);
+        setTimeout(() => {
+          if (!active) return;
+          setRandomPhoto(nextPhotoCandidate);
+          setIsFading(false);
+        }, 500);
+      };
     }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+    return () => {
+      active = false;
+      clearInterval(interval);
+    };
+  }, [randomPhoto]);
 
   return (
     <main className="flex flex-1 flex-col gap-16 w-full pt-8 sm:pt-14 lg:pt-16 pb-20 sm:pb-32">
@@ -293,7 +310,7 @@ export default function AboutPage() {
         {/* Two-column layout for Music */}
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {/* Left: Random Photo */}
-          <div className="flex flex-col lg:h-[352px]">
+          <div className="flex flex-col h-[250px] sm:h-[352px]">
             <div className="group relative h-full w-full overflow-hidden rounded-xl border border-theme-accent/20 bg-theme-bg shadow-lg transition hover:border-theme-accent/50">
               <Link
                 to="/photos"
