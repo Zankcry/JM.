@@ -63,3 +63,22 @@ export function Tooltip({ content, children }: TooltipProps) {
     </span>
   );
 }
+
+export function YahhoTooltip({ children }: { children: React.ReactNode }) {
+  return (
+    <Tooltip
+      content={
+        <span className="block font-sans text-center">
+          <strong className="text-theme-accent">やっほー (Yahho!)</strong>
+          <span className="block mt-1 text-[11px] leading-normal text-theme-text-muted">
+            A friendly, casual Japanese greeting meaning <span className="text-theme-text">"Yo!"</span>, <span className="text-theme-text">"Hey!"</span>, or <span className="text-theme-text">"Hi!"</span>.
+          </span>
+        </span>
+      }
+    >
+      <span className="border-b border-dashed border-theme-accent/50 pb-0.5 transition-colors hover:text-theme-accent">
+        {children}
+      </span>
+    </Tooltip>
+  );
+}

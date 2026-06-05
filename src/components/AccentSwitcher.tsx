@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { accentLabels, catppuccinPalettes } from '../theme/catppuccin';
+import { accentLabels, catppuccinPalettes, ThemeAccent } from '../theme/catppuccin';
 import { useTheme } from '../theme/ThemeProvider';
 
 interface Ripple {
@@ -10,6 +10,64 @@ interface Ripple {
   width: number;
   height: number;
   color: string;
+}
+
+interface AccentHexButtonProps {
+  option: ThemeAccent;
+  isActive: boolean;
+  swatchColor: readonly [number, number, number];
+  layoutId: string;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+function AccentHexButton({ option, isActive, swatchColor, layoutId, onClick }: AccentHexButtonProps) {
+  return (
+    <div className="relative h-5 w-5 flex items-center justify-center">
+      {isActive && (
+        <motion.div
+          layoutId={layoutId}
+          className="absolute -inset-[4px] pointer-events-none z-20"
+          transition={{ type: 'spring', stiffness: 150, damping: 22 }}
+        >
+          <svg
+            className="w-full h-full text-theme-accent"
+            viewBox="0 0 28 28"
+            fill="none"
+            style={{ filter: 'drop-shadow(0 0 8px rgb(var(--theme-accent) / 0.5))' }}
+          >
+            <polygon
+              points="14,1.5 24.8,7.8 24.8,20.2 14,26.5 3.2,20.2 3.2,7.8"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </motion.div>
+      )}
+      <button
+        type="button"
+        aria-label={`Set accent to ${accentLabels[option]}`}
+        aria-pressed={isActive}
+        onClick={onClick}
+        className={[
+          'relative w-full h-full flex items-center justify-center transition-all duration-200 ease-out focus:outline-none',
+          isActive ? 'scale-110' : 'hover:scale-125 active:scale-95',
+        ].join(' ')}
+        style={{ clipPath: 'polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%)' }}
+      >
+        <svg className="w-full h-full relative z-10" viewBox="0 0 24 24" fill="none">
+          <polygon
+            points="12,2.5 20.2,7.2 20.2,16.8 12,21.5 3.8,16.8 3.8,7.2"
+            fill={`rgb(${swatchColor[0]} ${swatchColor[1]} ${swatchColor[2]})`}
+            stroke={isActive ? "rgb(var(--theme-border-strong))" : "rgba(var(--theme-border), 0.3)"}
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+            className="transition-all duration-200 ease-out"
+          />
+        </svg>
+      </button>
+    </div>
+  );
 }
 
 export function AccentSwitcher({ inline = false }: { inline?: boolean } = {}) {
@@ -39,58 +97,16 @@ export function AccentSwitcher({ inline = false }: { inline?: boolean } = {}) {
   if (inline) {
     return (
       <div className="flex flex-wrap items-center gap-2 py-1">
-        {accents.map((option) => {
-          const isActive = option === accent;
-          const swatchColor = palette[option];
-
-          return (
-            <div key={option} className="relative h-5 w-5 flex items-center justify-center">
-              {isActive && (
-                <motion.div
-                  layoutId="accent-hex-marker-mobile"
-                  className="absolute -inset-[4px] pointer-events-none z-20"
-                  transition={{ type: 'spring', stiffness: 150, damping: 22 }}
-                >
-                  <svg
-                    className="w-full h-full text-theme-accent"
-                    viewBox="0 0 28 28"
-                    fill="none"
-                    style={{ filter: 'drop-shadow(0 0 8px rgb(var(--theme-accent) / 0.5))' }}
-                  >
-                    <polygon
-                      points="14,1.5 24.8,7.8 24.8,20.2 14,26.5 3.2,20.2 3.2,7.8"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </motion.div>
-              )}
-              <button
-                type="button"
-                aria-label={`Set accent to ${accentLabels[option]}`}
-                aria-pressed={isActive}
-                onClick={(e) => handleAccentClick(option, e)}
-                className={[
-                  'relative w-full h-full flex items-center justify-center transition-all duration-200 ease-out focus:outline-none',
-                  isActive ? 'scale-110' : 'hover:scale-125 active:scale-95',
-                ].join(' ')}
-                style={{ clipPath: 'polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%)' }}
-              >
-                <svg className="w-full h-full relative z-10" viewBox="0 0 24 24" fill="none">
-                  <polygon
-                    points="12,2.5 20.2,7.2 20.2,16.8 12,21.5 3.8,16.8 3.8,7.2"
-                    fill={`rgb(${swatchColor[0]} ${swatchColor[1]} ${swatchColor[2]})`}
-                    stroke={isActive ? "rgb(var(--theme-border-strong))" : "rgba(var(--theme-border), 0.3)"}
-                    strokeWidth="1.5"
-                    strokeLinejoin="round"
-                    className="transition-all duration-200 ease-out"
-                  />
-                </svg>
-              </button>
-            </div>
-          );
-        })}
+        {accents.map((option) => (
+          <AccentHexButton
+            key={option}
+            option={option}
+            isActive={option === accent}
+            swatchColor={palette[option]}
+            layoutId="accent-hex-marker-mobile"
+            onClick={(e) => handleAccentClick(option, e)}
+          />
+        ))}
       </div>
     );
   }
@@ -105,7 +121,6 @@ export function AccentSwitcher({ inline = false }: { inline?: boolean } = {}) {
       />
 
       <div className="relative flex flex-col gap-2">
-
         {/* Expanding Hexagonal Click Ripples */}
         <AnimatePresence>
           {ripples.map((ripple) => (
@@ -139,58 +154,16 @@ export function AccentSwitcher({ inline = false }: { inline?: boolean } = {}) {
           ))}
         </AnimatePresence>
 
-        {accents.map((option) => {
-          const isActive = option === accent;
-          const swatchColor = palette[option];
-
-          return (
-            <div key={option} className="relative h-5 w-5 flex items-center justify-center">
-              {isActive && (
-                <motion.div
-                  layoutId="accent-hex-marker"
-                  className="absolute -inset-[4px] pointer-events-none z-20"
-                  transition={{ type: 'spring', stiffness: 150, damping: 22 }}
-                >
-                  <svg
-                    className="w-full h-full text-theme-accent"
-                    viewBox="0 0 28 28"
-                    fill="none"
-                    style={{ filter: 'drop-shadow(0 0 8px rgb(var(--theme-accent) / 0.5))' }}
-                  >
-                    <polygon
-                      points="14,1.5 24.8,7.8 24.8,20.2 14,26.5 3.2,20.2 3.2,7.8"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </motion.div>
-              )}
-              <button
-                type="button"
-                aria-label={`Set accent to ${accentLabels[option]}`}
-                aria-pressed={isActive}
-                onClick={(e) => handleAccentClick(option, e)}
-                className={[
-                  'relative w-full h-full flex items-center justify-center transition-all duration-200 ease-out focus:outline-none',
-                  isActive ? 'scale-110' : 'hover:scale-125 active:scale-95',
-                ].join(' ')}
-                style={{ clipPath: 'polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%)' }}
-              >
-                <svg className="w-full h-full relative z-10" viewBox="0 0 24 24" fill="none">
-                  <polygon
-                    points="12,2.5 20.2,7.2 20.2,16.8 12,21.5 3.8,16.8 3.8,7.2"
-                    fill={`rgb(${swatchColor[0]} ${swatchColor[1]} ${swatchColor[2]})`}
-                    stroke={isActive ? "rgb(var(--theme-border-strong))" : "rgba(var(--theme-border), 0.3)"}
-                    strokeWidth="1.5"
-                    strokeLinejoin="round"
-                    className="transition-all duration-200 ease-out"
-                  />
-                </svg>
-              </button>
-            </div>
-          );
-        })}
+        {accents.map((option) => (
+          <AccentHexButton
+            key={option}
+            option={option}
+            isActive={option === accent}
+            swatchColor={palette[option]}
+            layoutId="accent-hex-marker"
+            onClick={(e) => handleAccentClick(option, e)}
+          />
+        ))}
       </div>
 
       {/* Dynamic Decorative Line (Bottom) */}

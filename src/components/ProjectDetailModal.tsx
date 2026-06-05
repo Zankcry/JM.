@@ -13,6 +13,7 @@ import { Project } from '../data/projects';
 import { ProjectPreview } from './ProjectPreview';
 import { techStack, techStackIcons } from '../data/tech';
 import { useTheme } from '../theme/ThemeProvider';
+import { fadeUpVariants } from '../utils/animations';
 
 type ProjectDetailModalProps = {
   project: Project | null;
@@ -113,10 +114,10 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
         >
           {/* Left Column: Media Presentation */}
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 12 }}
-            transition={{ duration: 0.65, ease: 'easeOut', delay: 0.1 }}
+            variants={fadeUpVariants(0.1)}
+            initial="initial"
+            animate="animate"
+            exit="exit"
             className="flex flex-col gap-6 w-full md:w-[45%] md:h-full md:justify-center md:pr-6 md:border-r md:border-theme-border/10 overflow-y-auto md:overflow-hidden custom-scrollbar"
           >
             <div className="flex flex-col gap-5">
@@ -202,10 +203,10 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
 
           {/* Right Column: Case Study Narrative & Sticky Footer */}
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 12 }}
-            transition={{ duration: 0.65, ease: 'easeOut', delay: 0.2 }}
+            variants={fadeUpVariants(0.2)}
+            initial="initial"
+            animate="animate"
+            exit="exit"
             className="w-full md:w-[55%] md:h-full flex flex-col justify-between overflow-hidden"
           >
             

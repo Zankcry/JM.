@@ -4,7 +4,7 @@ import type { Transition, Variants } from 'framer-motion';
 // Previously copy-pasted as { type: 'spring', stiffness: 220, damping: 26 }
 // across Projects.tsx 6+ times. Centralised here for easy tuning.
 
-export const springTransition: Transition = {
+const springTransition: Transition = {
   type: 'spring',
   stiffness: 220,
   damping: 26,

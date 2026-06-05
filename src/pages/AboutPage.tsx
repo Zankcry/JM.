@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Tooltip } from '../components/Tooltip';
+import { Tooltip, YahhoTooltip } from '../components/Tooltip';
 import { IconBrandSpotify } from '@tabler/icons-react';
 import {
   IconBrandGithub,
@@ -215,20 +215,7 @@ export default function AboutPage() {
         {/* Bio text */}
         <div className="flex flex-col gap-5 text-base leading-8 text-theme-text-muted sm:text-[17px]">
           <p>
-            <Tooltip
-              content={
-                <span className="block font-sans text-center">
-                  <strong className="text-theme-accent">やっほー (Yahho!)</strong>
-                  <span className="block mt-1 text-[11px] leading-normal text-theme-text-muted">
-                    A friendly, casual Japanese greeting meaning <span className="text-theme-text">"Yo!"</span>, <span className="text-theme-text">"Hey!"</span>, or <span className="text-theme-text">"Hi!"</span>.
-                  </span>
-                </span>
-              }
-            >
-              <span className="border-b border-dashed border-theme-accent/50 pb-0.5 transition-colors hover:text-theme-accent">
-                Yahho! (やっほー)
-              </span>
-            </Tooltip>{' '}
+            <YahhoTooltip>Yahho! (やっほー)</YahhoTooltip>{' '}
             I&apos;m an IT undergraduate from{' '}
             <span className="text-theme-accent">Holy Angel University</span> based in{' '}
             <span className="text-theme-accent">

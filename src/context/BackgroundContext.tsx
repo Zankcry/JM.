@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 
-export type BackgroundEffect = 'none' | 'cyber-pattern' | 'dot-matrix' | 'retro-scanlines' | 'hex-blueprint' | 'woven-grid';
-export type BrushWidth = 'thin' | 'medium' | 'thick';
+type BackgroundEffect = 'none' | 'cyber-pattern' | 'dot-matrix' | 'retro-scanlines' | 'hex-blueprint' | 'woven-grid';
+type BrushWidth = 'thin' | 'medium' | 'thick';
 
 type BackgroundContextType = {
   effect: BackgroundEffect;
