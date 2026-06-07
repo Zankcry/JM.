@@ -3,7 +3,7 @@ import { IconX, IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useBodyScrollLock } from '../hooks/useBodyScrollLock';
 
-export type LightboxItem = {
+type LightboxItem = {
   src: string;
   comment?: string;
 };
