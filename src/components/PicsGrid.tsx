@@ -53,34 +53,34 @@ const cardVariants: Variants = {
 };
 
 const ASPECT_RATIO_LOOKUP: Record<string, number> = {
-  'august.jpg': 2608 / 4640,
-  'aurora-trip.jpg': 3024 / 4032,
-  'baguio.jpg': 1836 / 3264,
-  'billiards.jpg': 4032 / 3024,
-  'bonfire.jpg': 4640 / 2608,
-  'cafe-chill.jpg': 4032 / 3024,
-  'captured-moments.jpg': 917 / 688,
-  'christmas-day.jpg': 2608 / 4640,
-  'christmas-eve.jpg': 2608 / 4640,
-  'elegant-furina.png': 1080 / 1920,
-  'genshin-selfie.png': 1080 / 1920,
-  'good-times.jpg': 917 / 1223,
-  'heading-to-class.jpg': 4032 / 3024,
-  'holy-angel.webp': 4032 / 3024,
-  'late-night.jpg': 4032 / 3024,
+  'august.jpg': 4640 / 2608,
+  'aurora-trip.jpg': 4032 / 3024,
+  'baguio.jpg': 3264 / 1836,
+  'billiards.jpg': 3024 / 4032,
+  'bonfire.jpg': 2608 / 4640,
+  'cafe-chill.jpg': 3024 / 4032,
+  'captured-moments.jpg': 688 / 917,
+  'christmas-day.jpg': 4640 / 2608,
+  'christmas-eve.jpg': 4640 / 2608,
+  'elegant-furina.png': 1920 / 1080,
+  'genshin-selfie.png': 1920 / 1080,
+  'good-times.jpg': 1223 / 917,
+  'heading-to-class.jpg': 3024 / 4032,
+  'holy-angel.webp': 3024 / 4032,
+  'late-night.jpg': 3024 / 4032,
   'leaving-for-class.jpg': 3024 / 4032,
-  'luyang-academy.png': 1080 / 1920,
-  'mecha-oishii.jpeg': 2048 / 1536,
-  'missing.jpg': 474 / 843,
-  'motivation.jpg': 1440 / 1080,
-  'natlan-secret-place.png': 1080 / 1920,
-  'natlan-volcano-peak.png': 1080 / 1920,
+  'luyang-academy.png': 1920 / 1080,
+  'mecha-oishii.jpeg': 1536 / 2048,
+  'missing.jpg': 843 / 474,
+  'motivation.jpg': 1080 / 1440,
+  'natlan-secret-place.png': 1920 / 1080,
+  'natlan-volcano-peak.png': 1920 / 1080,
   'quiet-afternoon.jpg': 3024 / 4032,
-  'silly-furina.png': 1080 / 1920,
-  'starting-2025.jpg': 2608 / 4640,
-  'temple-of-space.png': 1080 / 1920,
-  'wandering.png': 1080 / 1920,
-  'windmills.png': 1080 / 1920
+  'silly-furina.png': 1920 / 1080,
+  'starting-2025.jpg': 4640 / 2608,
+  'temple-of-space.png': 1920 / 1080,
+  'wandering.png': 1920 / 1080,
+  'windmills.png': 1920 / 1080
 };
 
 // Individual photo card with shimmer skeleton + fade-in on load (prevents flash/glitch)
@@ -101,25 +101,23 @@ function PhotoCard({ photo, globalIndex, onPhotoClick }: PhotoCardProps) {
     }
   }, []);
 
+  const filename = photo.src.split('/').pop() || '';
+  const ratio = ASPECT_RATIO_LOOKUP[filename] || 0.75;
+
   return (
     <motion.div
       variants={cardVariants}
-      className="relative group cursor-pointer overflow-hidden bg-theme-bg shadow-lg rounded-3xl"
+      className="relative group cursor-pointer overflow-hidden bg-theme-bg shadow-lg rounded-3xl w-full"
       onClick={() => onPhotoClick(globalIndex)}
+      style={{
+        aspectRatio: `${ratio}`,
+      }}
     >
       {/* Shimmer skeleton shown while the image loads */}
-      {!loaded && (
-        <div
-          className="w-full animate-pulse bg-gradient-to-r from-theme-bg-elevated/40 via-theme-bg-elevated/70 to-theme-bg-elevated/40 bg-[length:200%_100%]"
-          style={{
-            aspectRatio: (() => {
-              const filename = photo.src.split('/').pop() || '';
-              const ratio = ASPECT_RATIO_LOOKUP[filename] || 0.75;
-              return `${ratio}`;
-            })(),
-          }}
-        />
-      )}
+      <div
+        className={`absolute inset-0 w-full h-full animate-pulse bg-gradient-to-r from-theme-bg-elevated/40 via-theme-bg-elevated/70 to-theme-bg-elevated/40 bg-[length:200%_100%] transition-opacity duration-500 ${loaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
+          }`}
+      />
       <img
         ref={imgRef}
         src={photo.src}
@@ -127,10 +125,10 @@ function PhotoCard({ photo, globalIndex, onPhotoClick }: PhotoCardProps) {
         loading="lazy"
         decoding="async"
         onLoad={() => setLoaded(true)}
-        className="w-full h-auto object-cover transition-[transform,opacity] duration-500 group-hover:scale-105"
+        className="absolute inset-0 w-full h-full object-cover transition-[transform,opacity] duration-500 group-hover:scale-105"
         style={{ opacity: loaded ? 1 : 0 }}
       />
-      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 pointer-events-none">
+      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 pointer-events-none z-10">
         <p className="text-white text-xs font-mono drop-shadow-[0_1px_2px_rgba(0,0,0,1)] line-clamp-2">
           "{photo.comment}"
         </p>
@@ -175,7 +173,7 @@ export default function PicsGrid({ photos, onPhotoClick }: PicsGridProps) {
     }
 
     cols[minColIndex].push(photo);
-    colHeights[minColIndex] += ratio;
+    colHeights[minColIndex] += 1 / ratio;
   });
 
   return (
