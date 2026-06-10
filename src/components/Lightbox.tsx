@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { IconX, IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
+import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useBodyScrollLock } from '../hooks/useBodyScrollLock';
 
@@ -65,14 +65,7 @@ export default function Lightbox({
         className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 sm:p-8"
         onClick={onClose}
       >
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-6 right-6 text-white/70 hover:text-white transition-all bg-black/40 hover:bg-black/80 rounded-full p-2.5 z-[110] active:scale-95 border border-white/10"
-          aria-label="Close image viewer"
-        >
-          <IconX size={24} />
-        </button>
+
 
         {/* Previous Button */}
         <button
